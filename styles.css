@@ -13,27 +13,31 @@ body {
     background-color: #f5f7fa;
     color: #333;
     line-height: 1.6;
-    overflow-x: hidden;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 /* Navigation Bar */
 header {
-    background: linear-gradient(135deg, #4b79a1, #283e51);
-    padding: 20px;
-    text-align: center;
-    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 15px 5%;
+    background: linear-gradient(135deg, #4b79a1, #283e51);
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 600;
 }
 
 nav ul {
     list-style: none;
-    padding: 0;
+    display: flex;
 }
 
 nav ul li {
-    display: inline;
     margin: 0 15px;
 }
 
@@ -44,38 +48,62 @@ nav ul li a {
     transition: color 0.3s ease-in-out;
 }
 
-nav ul li a:hover {
+nav ul li a:hover, .active {
     color: #ffcc00;
+}
+
+/* Dark Mode Button */
+#dark-mode-toggle {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: white;
 }
 
 /* Hero Section */
 .hero {
-    height: 80vh;
+    height: 90vh;
     background: url('background.jpg') center/cover no-repeat;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    position: relative;
     color: white;
     padding: 20px;
 }
 
-.hero img {
-    width: 225px; /* Increased by 50% */
-    height: 225px;
-    border-radius: 50%;
-    border: 4px solid white;
-    object-fit: cover;
-    max-width: 100%;
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
 }
 
-/* Typing Effect */
-#hero-text {
+.hero-content {
+    z-index: 2;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.hero img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 4px solid white;
+    margin-bottom: 20px;
+}
+
+.hero h2 {
+    font-size: 50px;
+    animation: slideDown 1.5s ease-in-out;
+}
+
+.hero p {
     font-size: 20px;
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 2px solid;
+    animation: fadeInOnly 2s ease-in-out forwards;
 }
 
 /* Button */
@@ -96,20 +124,6 @@ nav ul li a:hover {
     transform: scale(1.1);
 }
 
-/* Dark Mode */
-.dark-mode {
-    background-color: #222;
-    color: white;
-}
-
-.dark-mode header {
-    background: #111;
-}
-
-.dark-mode nav ul li a {
-    color: #ffcc00;
-}
-
 /* Footer */
 footer {
     background: #283e51;
@@ -119,16 +133,41 @@ footer {
     margin-top: 50px;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .hero h2 {
-        font-size: 36px;
-    }
-    .hero p {
-        font-size: 16px;
-    }
-    .hero img {
-        width: 150px;
-        height: 150px;
-    }
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInOnly {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Dark Mode */
+.dark-mode {
+    background: #121212;
+    color: #ddd;
+}
+
+.dark-mode header {
+    background: linear-gradient(135deg, #1e3c72, #1e1e1e);
+}
+
+.dark-mode footer {
+    background: #1e1e1e;
+}
+
+.dark-mode .btn {
+    background: #ffcc00;
+    color: #333;
+}
+
+.dark-mode .btn:hover {
+    background: #ffaa00;
 }
