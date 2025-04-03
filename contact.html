@@ -3,37 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miscellaneous - Your Name</title>
+    <title>Contact - Your Name</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .animated-section {
-            animation: fadeInUp 1s ease-out;
-        }
-        .rotating-text {
-            font-size: 24px;
-            font-weight: bold;
-            display: inline-block;
-            animation: rotateText 3s infinite alternate;
-        }
-        @keyframes rotateText {
-            0% { transform: rotate(-5deg); }
-            100% { transform: rotate(5deg); }
-        }
-    </style>
+    <script defer src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Your Name</h1>
+        <div class="logo">Your Name</div>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -41,21 +19,43 @@
                 <li><a href="research.html">Research</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="miscellaneous.html">Miscellaneous</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
             </ul>
         </nav>
+        <button id="dark-mode-toggle">🌙</button>
     </header>
-    <section class="animated-section">
-        <h2>Miscellaneous</h2>
-        <p class="rotating-text">Welcome to my personal space where I share my hobbies, awards, and side projects.</p>
-        <ul>
-            <li><strong>Hobbies:</strong> [List your hobbies]</li>
-            <li><strong>Awards & Recognitions:</strong> [List your achievements]</li>
-            <li><strong>Side Projects:</strong> [Describe any side projects]</li>
-        </ul>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Contact Me</h1>
+            <p>Feel free to reach out for collaborations, questions, or just a chat!</p>
+        </div>
     </section>
+
+    <section class="contact-form">
+        <div class="form-container">
+            <h2 class="fancy-heading">Get in Touch</h2>
+            <form action="https://formspree.io/f/your-email" method="POST">
+                <div class="input-group">
+                    <input type="text" name="name" required>
+                    <label>Name</label>
+                </div>
+                <div class="input-group">
+                    <input type="email" name="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-group">
+                    <textarea name="message" required></textarea>
+                    <label>Message</label>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
     <footer>
-        <p>&copy; 2025 Your Name</p>
+        <p>&copy; 2025 Your Name | All Rights Reserved</p>
     </footer>
 </body>
 </html>
+
