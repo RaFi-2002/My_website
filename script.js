@@ -1,55 +1,51 @@
 // Dark Mode Toggle
-const darkModeToggle = document.getElementById('dark-mode-toggle');
+const darkModeToggle = document.getElementById("dark-mode-toggle");
 const body = document.body;
 
-darkModeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    
-    // Store user preference
-    if (body.classList.contains('dark-mode')) {
-        localStorage.setItem('theme', 'dark');
-        darkModeToggle.textContent = '☀️';
+// Check local storage for dark mode preference
+if (localStorage.getItem("darkMode") === "enabled") {
+    body.classList.add("dark-mode");
+}
+
+// Toggle dark mode on button click
+darkModeToggle.addEventListener("click", () => {
+    body.classList.toggle("dark-mode");
+
+    // Save preference to local storage
+    if (body.classList.contains("dark-mode")) {
+        localStorage.setItem("darkMode", "enabled");
     } else {
-        localStorage.setItem('theme', 'light');
-        darkModeToggle.textContent = '🌙';
+        localStorage.setItem("darkMode", "disabled");
     }
 });
 
-// Apply saved theme preference
-window.addEventListener('load', () => {
-    if (localStorage.getItem('theme') === 'dark') {
-        body.classList.add('dark-mode');
-        darkModeToggle.textContent = '☀️';
-    }
-});
+// Smooth Scrolling for Navigation Links
+document.querySelectorAll("nav ul li a").forEach(anchor => {
+    anchor.addEventListener("click", function (e) {
+        if (this.getAttribute("href").startsWith("#")) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            const targetElement = document.getElementById(targetId);
 
-// Smooth Scroll for Navigation Links
-document.querySelectorAll('nav ul li a').forEach(anchor => {
-    anchor.addEventListener('click', function(event) {
-        event.preventDefault();
-        const sectionId = this.getAttribute('href');
-        document.querySelector(sectionId).scrollIntoView({
-            behavior: 'smooth'
-        });
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 60,
+                    behavior: "smooth"
+                });
+            }
+        }
     });
 });
 
-// Fade-In Animation on Scroll
-const faders = document.querySelectorAll('.fade-in');
-
-const appearOptions = {
-    threshold: 0.3,
-    rootMargin: "0px 0px -100px 0px"
-};
-
-const appearOnScroll = new IntersectionObserver((entries, appearOnScroll) => {
-    entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('appear');
-        appearOnScroll.unobserve(entry.target);
+// Contact Form Interactivity
+document.querySelectorAll(".input-group input, .input-group textarea").forEach(input => {
+    input.addEventListener("focus", function () {
+        this.nextElementSibling.classList.add("active");
     });
-}, appearOptions);
 
-faders.forEach(fader => {
-    appearOnScroll.observe(fader);
+    input.addEventListener("blur", function () {
+        if (this.value === "") {
+            this.nextElementSibling.classList.remove("active");
+        }
+    });
 });
