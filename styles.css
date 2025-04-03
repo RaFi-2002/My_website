@@ -1,5 +1,5 @@
-/* Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@400;700&family=Raleway:wght@300;600&display=swap');
 
 /* General Styles */
 * {
@@ -89,8 +89,8 @@ nav ul li a:hover, .active {
 }
 
 .hero img {
-    width: 180px;
-    height: 180px;
+    width: 270px;
+    height: 270px;
     border-radius: 50%;
     border: 4px solid white;
     margin-bottom: 20px;
@@ -117,6 +117,8 @@ nav ul li a:hover, .active {
     border-radius: 30px;
     text-decoration: none;
     transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    border: none;
 }
 
 .btn:hover {
@@ -124,29 +126,88 @@ nav ul li a:hover, .active {
     transform: scale(1.1);
 }
 
-/* Footer */
-footer {
-    background: #283e51;
+/* Miscellaneous Animations */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rotateText {
+    0% { transform: rotate(-5deg); }
+    100% { transform: rotate(5deg); }
+}
+
+.animated-section {
+    animation: fadeInUp 1s ease-out;
+}
+
+.rotating-text {
+    font-size: 24px;
+    font-weight: bold;
+    display: inline-block;
+    animation: rotateText 3s infinite alternate;
+}
+
+/* Contact Form */
+.contact-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
     color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 50px;
 }
 
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+.form-container {
+    width: 50%;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    color: black;
 }
 
-@keyframes fadeInOnly {
-    from { opacity: 0; }
-    to { opacity: 1; }
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
 }
 
-@keyframes slideDown {
-    from { transform: translateY(-50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+.input-group input, 
+.input-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #555;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+.input-group label {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    font-size: 16px;
+    color: #777;
+    transition: all 0.3s ease-in-out;
+}
+
+.input-group input:focus, 
+.input-group textarea:focus {
+    border-bottom: 2px solid #ffcc00;
+    outline: none;
+}
+
+.input-group input:focus + label, 
+.input-group textarea:focus + label {
+    top: -10px;
+    left: 5px;
+    font-size: 14px;
+    color: #ffcc00;
+}
+
+textarea {
+    height: 100px;
+    resize: none;
 }
 
 /* Dark Mode */
@@ -170,4 +231,36 @@ footer {
 
 .dark-mode .btn:hover {
     background: #ffaa00;
+}
+
+.dark-mode .form-container {
+    background: #16213e;
+    color: white;
+}
+
+.dark-mode .input-group input, 
+.dark-mode .input-group textarea {
+    color: white;
+    background: transparent;
+    border-bottom: 2px solid #999;
+}
+
+.dark-mode .input-group label {
+    color: #bbb;
+}
+
+/* Footer */
+footer {
+    background: #283e51;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-container {
+        width: 90%;
+    }
 }
