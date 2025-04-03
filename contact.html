@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miscellaneous - Your Name</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animated-section {
+            animation: fadeInUp 1s ease-out;
+        }
+        .rotating-text {
+            font-size: 24px;
+            font-weight: bold;
+            display: inline-block;
+            animation: rotateText 3s infinite alternate;
+        }
+        @keyframes rotateText {
+            0% { transform: rotate(-5deg); }
+            100% { transform: rotate(5deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Your Name</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="miscellaneous.html">Miscellaneous</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="animated-section">
+        <h2>Miscellaneous</h2>
+        <p class="rotating-text">Welcome to my personal space where I share my hobbies, awards, and side projects.</p>
+        <ul>
+            <li><strong>Hobbies:</strong> [List your hobbies]</li>
+            <li><strong>Awards & Recognitions:</strong> [List your achievements]</li>
+            <li><strong>Side Projects:</strong> [Describe any side projects]</li>
+        </ul>
+    </section>
+    <footer>
+        <p>&copy; 2025 Your Name</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,204 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Navigation Bar */
+header {
+    background: linear-gradient(135deg, #4b79a1, #283e51);
+    padding: 20px 0;
+    text-align: center;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+    color: #ffcc00;
+}
+
+/* Hero Section */
+.hero {
+    height: 90vh;
+    background: url('background.jpg') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    color: white;
+    padding: 20px;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.hero-content {
+    z-index: 2;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* ✅ FIXED PROFILE PICTURE SIZE */
+.hero img {
+    width: 150px; /* Adjust width */
+    height: 150px; /* Adjust height */
+    border-radius: 50%;  /* Make it round */
+    border: 4px solid white;
+    margin-bottom: 20px;
+    object-fit: cover; /* Ensures the image maintains aspect ratio */
+    max-width: 100%;
+}
+
+/* Heading & Text */
+.hero h2 {
+    font-size: 50px;
+    text-transform: uppercase;
+    animation: slideDown 1.5s ease-in-out;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-top: 10px;
+    animation: fadeInOnly 2s ease-in-out forwards; /* Keeps text visible */
+    opacity: 1; /* Ensures it stays visible */
+}
+
+/* Persistent Text Animation */
+@keyframes fadeInOnly {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 24px;
+    background: #ff6600;
+    color: white;
+    font-size: 18px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background: #ff4500;
+    transform: scale(1.1);
+}
+
+/* Section Styling */
+section {
+    padding: 60px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 36px;
+    color: #222;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Card Layout */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+    padding: 0 50px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer */
+footer {
+    background: #283e51;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero h2 {
+        font-size: 36px;
+    }
+    .hero p {
+        font-size: 16px;
+    }
+    section {
+        padding: 40px;
+    }
+    .hero img {
+        width: 150px; /* Smaller profile picture for mobile */
+        height: 150px;
+    }
+}
