@@ -5,49 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Miscellaneous - Your Name</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script> 
+    <script defer src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Your Name</h1>
+        <div class="logo">Your Name</div>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="education.html">Education</a></li>
                 <li><a href="research.html">Research</a></li>
                 <li><a href="projects.html">Projects</a></li>
-                <li><a href="miscellaneous.html">Miscellaneous</a></li>
+                <li><a href="miscellaneous.html" class="active">Miscellaneous</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
+        <button id="dark-mode-toggle">🌙</button>
     </header>
 
-    <section class="misc-container">
-        <h2 class="fade-in">Miscellaneous</h2>
-        <p class="slide-up">This section covers my **hobbies, awards, side projects, and other interests.**</p>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Miscellaneous</h1>
+            <p>Explore my interests, hobbies, and achievements.</p>
+        </div>
+    </section>
 
-        <div class="grid-container">
-            <div class="card zoom">
-                <h3>🏆 Achievements</h3>
-                <p>Winner of [Your Award], [Year]. Featured in [Publication].</p>
-            </div>
-            <div class="card zoom">
-                <h3>🎨 Hobbies</h3>
-                <p>I love [Painting, Coding, Music, Photography, etc.]. Here are some of my works.</p>
-            </div>
-            <div class="card zoom">
-                <h3>📚 Books & Learning</h3>
-                <p>Currently reading: [Book Name]. Favorite authors: [Author Names].</p>
-            </div>
-            <div class="card zoom">
-                <h3>🌎 Travel & Culture</h3>
-                <p>I've traveled to [Countries]. Exploring different cultures is my passion.</p>
-            </div>
+    <section class="animated-section">
+        <div class="content-box">
+            <h2 class="fancy-heading">Hobbies & Interests</h2>
+            <p class="fade-in">I love exploring new technologies, painting, and playing the piano.</p>
+        </div>
+        
+        <div class="content-box">
+            <h2 class="fancy-heading">Awards & Achievements</h2>
+            <p class="fade-in">Winner of XYZ Research Award | Speaker at ABC Conference | Published 3 papers in international journals.</p>
+        </div>
+
+        <div class="content-box">
+            <h2 class="fancy-heading">Side Projects</h2>
+            <p class="fade-in">Developed a machine-learning model for chemical processes and built a Python automation tool.</p>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2025 Your Name</p>
+        <p>&copy; 2025 Your Name | All Rights Reserved</p>
     </footer>
 </body>
 </html>
