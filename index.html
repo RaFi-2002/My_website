@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rakibul Hasan Rafi - Portfolio</title>
+    <title>Your Name - Personal Website</title>
     <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
     <header>
-        <h1>Rakibul Hasan Rafi</h1>
-        <button class="theme-toggle">🌙</button>
+        <div class="logo">Your Name</div>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="education.html">Education</a></li>
                 <li><a href="research.html">Research</a></li>
                 <li><a href="projects.html">Projects</a></li>
@@ -20,19 +20,20 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
+        <button id="dark-mode-toggle">🌙</button>
     </header>
 
     <section class="hero">
-        <img src="profile.jpg" alt="Rakibul Hasan Rafi">
-        <h2>Welcome to My Personal Website</h2>
-        <p id="hero-text"></p>
-        <a href="resume.pdf" class="btn">Download Resume</a>
+        <div class="hero-content">
+            <img src="profile.jpg" alt="Your Profile Picture">
+            <h2>Welcome to My Personal Website</h2>
+            <p>Hi, I'm Rakibul Hasan Rafi, a Student in Chemical Engineering. My research focuses on Ungabunga.</p>
+            <a href="resume.pdf" class="btn">Download Resume</a>
+        </div>
     </section>
 
     <footer>
-        <p>&copy; 2025 Rakibul Hasan Rafi | All Rights Reserved</p>
+        <p>&copy; 2025 Your Name | All Rights Reserved</p>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
