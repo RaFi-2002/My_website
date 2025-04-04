@@ -319,3 +319,32 @@ footer {
 .social-links a:hover {
     color: #007bff; /* Blue hover effect */
 }
+.social-media {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-links a {
+    font-size: 30px;
+    color: #333;
+    transition: color 0.3s ease-in-out;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    color: #0077b5; /* LinkedIn Blue */
+}
+
+.social-links a:nth-child(1):hover {
+    color: #1877F2; /* Facebook Blue */
+}
+
+.social-links a:nth-child(3):hover {
+    color: #1DA1F2; /* X (Twitter) Blue */
+}
