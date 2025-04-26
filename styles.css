@@ -1,43 +1,25 @@
-/* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@400;700&family=Raleway:wght@300;600&display=swap');
-
-/* General Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
 body {
     background-color: #f5f7fa;
     color: #333;
-    line-height: 1.6;
-    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* Navigation Bar */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 5%;
     background: linear-gradient(135deg, #4b79a1, #283e51);
+    padding: 20px 0;
+    text-align: center;
     color: white;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.logo {
-    font-size: 24px;
-    font-weight: 600;
-}
-
 nav ul {
     list-style: none;
-    display: flex;
+    padding: 0;
 }
 
 nav ul li {
+    display: inline;
     margin: 0 15px;
 }
 
@@ -48,17 +30,8 @@ nav ul li a {
     transition: color 0.3s ease-in-out;
 }
 
-nav ul li a:hover, .active {
+nav ul li a:hover {
     color: #ffcc00;
-}
-
-/* Dark Mode Button */
-#dark-mode-toggle {
-    background: none;
-    border: none;
-    font-size: 22px;
-    cursor: pointer;
-    color: white;
 }
 
 /* Hero Section */
@@ -66,285 +39,32 @@ nav ul li a:hover, .active {
     height: 90vh;
     background: url('background.jpg') center/cover no-repeat;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     position: relative;
     color: white;
-    padding: 20px;
-}
-
-.hero::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-}
-
-.hero-content {
-    z-index: 2;
-    animation: fadeIn 2s ease-in-out;
 }
 
 .hero img {
-    width: 270px;
-    height: 270px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     border: 4px solid white;
     margin-bottom: 20px;
 }
 
-.hero h2 {
-    font-size: 50px;
-    animation: slideDown 1.5s ease-in-out;
-}
-
-.hero p {
-    font-size: 20px;
-    animation: fadeInOnly 2s ease-in-out forwards;
-}
-
-/* Button */
-.btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 24px;
-    background: #ff6600;
-    color: white;
-    font-size: 18px;
-    border-radius: 30px;
-    text-decoration: none;
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-    border: none;
-}
-
-.btn:hover {
-    background: #ff4500;
-    transform: scale(1.1);
-}
-
-/* Miscellaneous Animations */
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(50px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes rotateText {
-    0% { transform: rotate(-5deg); }
-    100% { transform: rotate(5deg); }
-}
-
-.animated-section {
-    animation: fadeInUp 1s ease-out;
-}
-
-.rotating-text {
-    font-size: 24px;
-    font-weight: bold;
-    display: inline-block;
-    animation: rotateText 3s infinite alternate;
-}
-
-/* Contact Form */
-.contact-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 60px 20px;
-    background: linear-gradient(135deg, #1a1a2e, #16213e);
-    color: white;
-}
-
-.form-container {
-    width: 50%;
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
-    color: black;
-}
-
-.input-group {
-    position: relative;
-    margin-bottom: 25px;
-}
-
-.input-group input, 
-.input-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-bottom: 2px solid #555;
-    font-size: 16px;
-    transition: all 0.3s ease-in-out;
-}
-
-.input-group label {
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    font-size: 16px;
-    color: #777;
-    transition: all 0.3s ease-in-out;
-}
-
-.input-group input:focus, 
-.input-group textarea:focus {
-    border-bottom: 2px solid #ffcc00;
-    outline: none;
-}
-
-.input-group input:focus + label, 
-.input-group textarea:focus + label {
-    top: -10px;
-    left: 5px;
-    font-size: 14px;
-    color: #ffcc00;
-}
-
-textarea {
-    height: 100px;
-    resize: none;
-}
-
 /* Dark Mode */
 .dark-mode {
-    background: #121212;
-    color: #ddd;
+    background-color: #222;
+    color: white;
 }
 
 .dark-mode header {
-    background: linear-gradient(135deg, #1e3c72, #1e1e1e);
+    background: #111;
 }
 
-.dark-mode footer {
-    background: #1e1e1e;
-}
-
-.dark-mode .btn {
-    background: #ffcc00;
-    color: #333;
-}
-
-.dark-mode .btn:hover {
-    background: #ffaa00;
-}
-
-.dark-mode .form-container {
-    background: #16213e;
-    color: white;
-}
-
-.dark-mode .input-group input, 
-.dark-mode .input-group textarea {
-    color: white;
-    background: transparent;
-    border-bottom: 2px solid #999;
-}
-
-.dark-mode .input-group label {
-    color: #bbb;
-}
-
-/* Footer */
-footer {
-    background: #283e51;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 50px;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .form-container {
-        width: 90%;
-    }
-}
-.social-media {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-.social-links a {
-    font-size: 24px;
-    color: #333;
-    transition: color 0.3s ease-in-out;
-}
-
-.social-links a:hover {
-    color: #0077b5; /* LinkedIn Blue */
-}
-
-.social-links a:nth-child(1):hover {
-    color: #1877F2; /* Facebook Blue */
-}
-
-.social-links a:nth-child(3):hover {
-    color: #1DA1F2; /* Twitter (X) Blue */
-}
-/* Social Media Section */
-.social-media {
-    text-align: center;
-    margin-top: 30px;
-}
-
-.social-media h3 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.social-links a {
-    font-size: 1.8rem;
-    color: #333;
-    transition: color 0.3s ease-in-out;
-}
-
-.social-links a:hover {
-    color: #007bff; /* Blue hover effect */
-}
-.social-media {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-.social-links a {
-    font-size: 30px;
-    color: #333;
-    transition: color 0.3s ease-in-out;
-    text-decoration: none;
-}
-
-.social-links a:hover {
-    color: #0077b5; /* LinkedIn Blue */
-}
-
-.social-links a:nth-child(1):hover {
-    color: #1877F2; /* Facebook Blue */
-}
-
-.social-links a:nth-child(3):hover {
-    color: #1DA1F2; /* X (Twitter) Blue */
+.dark-mode nav ul li a {
+    color: #ffcc00;
 }
