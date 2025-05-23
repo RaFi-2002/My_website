@@ -399,3 +399,105 @@ height: 120px;
     margin-top: 2rem;
   }
 }
+/* Certifications grid layout */
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.8rem;
+  margin-top: 1rem;
+}
+
+/* Certificate card styling */
+.cert-card {
+  background: #f0f8ff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 71, 142, 0.15);
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+.cert-card:hover,
+.cert-card:focus-within {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 10px 30px rgba(0, 71, 142, 0.35);
+  outline: none;
+}
+
+/* Certificate thumbnail */
+.cert-thumbnail {
+  width: 100%;
+  max-width: 140px;
+  height: 180px;
+  object-fit: contain;
+  margin-bottom: 0.8rem;
+  border-radius: 8px;
+  box-shadow: inset 0 0 12px #a0c8ff;
+  background: white;
+}
+
+/* Certificate title */
+.cert-title {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #004a99;
+  user-select: none;
+}
+
+/* Modal backdrop */
+#modal {
+  display: none;
+  position: fixed;
+  z-index: 1100;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(5px);
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+#modal[aria-hidden="false"] {
+  display: flex;
+}
+#modal-content {
+  background: white;
+  border-radius: 12px;
+  max-width: 90vw;
+  max-height: 90vh;
+  width: 800px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+#modal iframe {
+  flex-grow: 1;
+  border: none;
+  border-radius: 0 0 12px 12px;
+}
+#modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+#modal-close:hover,
+#modal-close:focus {
+  color: #0077b6;
+  outline: none;
+}
+
+/* Section spacing */
+section.activities, section.volunteering {
+  margin-top: 3rem;
+}
