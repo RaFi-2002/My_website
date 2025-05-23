@@ -228,7 +228,7 @@ height: 120px;
 .publication-card:hover,
 .publication-card:focus-within {
   transform: translateY(-6px);
-  box-shadow: 0 10px 30px rgba(0, 180, 216, 0.5);
+  box-shadow: 0 10px 30px rgba(0, 154, 176, 0.9);
   outline: none;
 }
 
