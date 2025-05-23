@@ -13,7 +13,6 @@ const heroTextElement = document.getElementById("hero-text");
 
 function typeText() {
   if (!heroTextElement) return;
-  
   if (charIndex < texts[currentTextIndex].length) {
     heroTextElement.textContent += texts[currentTextIndex].charAt(charIndex);
     charIndex++;
@@ -25,7 +24,6 @@ function typeText() {
 
 function eraseText() {
   if (!heroTextElement) return;
-  
   if (charIndex > 0) {
     heroTextElement.textContent = texts[currentTextIndex].substring(0, charIndex - 1);
     charIndex--;
@@ -36,131 +34,40 @@ function eraseText() {
   }
 }
 
-window.addEventListener("DOMContentLoaded", () => {
-  typeText();
-  setupModalAccessibility();
-});
-// === Modal PDF and MATLAB code viewer functionality ===
-(() => {
-  const modal = document.getElementById('modal');
-  const modalTitle = document.getElementById('modalTitle');
-  const closeModalBtn = document.querySelector('.close-modal');
-  const pdfViewer = document.getElementById('pdf-viewer');
-  const codeViewer = document.getElementById('code-viewer');
+// Modal functionality (for certificates, project pdf/code viewer)
+const modal = document.getElementById('modal');
+const closeModalBtn = document.querySelector('.close-modal');
+const pdfViewer = document.getElementById('pdf-viewer');
+const codeViewer = document.getElementById('code-viewer');
+const modalTitle = document.getElementById('modalTitle');
 
-  // Open PDF modal
-  document.querySelectorAll('.view-pdf').forEach(el => {
-    el.addEventListener('click', e => {
-      e.preventDefault();
-      const src = el.getAttribute('data-src');
-      modalTitle.textContent = `Viewing PDF: ${src.split('/').pop()}`;
-      pdfViewer.src = src;
-      pdfViewer.style.display = 'block';
-      codeViewer.style.display = 'none';
-      showModal();
-    });
-  });
+function closeModal() {
+  modal.style.display = 'none';
+  modal.setAttribute('aria-hidden', 'true');
+  pdfViewer.src = '';
+  pdfViewer.style.display = 'none';
+  codeViewer.style.display = 'none';
+  codeViewer.textContent = '';
+  modalTitle.textContent = '';
+}
 
-  // Open MATLAB code modal
-  document.querySelectorAll('.view-code').forEach(el => {
-    el.addEventListener('click', async e => {
-      e.preventDefault();
-      const src = el.getAttribute('data-src');
-      modalTitle.textContent = `Viewing Code: ${src.split('/').pop()}`;
-      pdfViewer.style.display = 'none';
-      codeViewer.style.display = 'block';
-      codeViewer.textContent = 'Loading...';
-      try {
-        const response = await fetch(src);
-        if (!response.ok) throw new Error('Failed to load file.');
-        const codeText = await response.text();
-        codeViewer.textContent = codeText;
-      } catch {
-        codeViewer.textContent = 'Error loading code file.';
-      }
-      showModal();
-    });
-  });
+// Focus trap inside modal for accessibility
+const focusableSelectors = 'a[href], button:not([disabled]), textarea, input, select';
+let focusableElements = [];
+let firstFocusable, lastFocusable;
 
-  function showModal() {
-    modal.style.display = 'flex';
-    modal.setAttribute('aria-hidden', 'false');
-    closeModalBtn.focus();
-  }
-
-  function closeModal() {
-    modal.style.display = 'none';
-    modal.setAttribute('aria-hidden', 'true');
-    pdfViewer.src = '';
-    codeViewer.textContent = '';
-  }
-
-  closeModalBtn.addEventListener('click', closeModal);
-  modal.addEventListener('click', e => {
-    if (e.target === modal) closeModal();
-  });
-  document.addEventListener('keydown', e => {
-    if (modal.style.display === 'flex' && e.key === 'Escape') closeModal();
-  });
-
-  // Project filter buttons
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const projects = document.querySelectorAll('.project-card');
-  filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      filterButtons.forEach(btn => {
-        btn.classList.remove('active');
-        btn.setAttribute('aria-pressed', 'false');
-      });
-      button.classList.add('active');
-      button.setAttribute('aria-pressed', 'true');
-      const filter = button.getAttribute('data-filter');
-      projects.forEach(proj => {
-        if (filter === 'all' || proj.getAttribute('data-category') === filter) {
-          proj.style.display = 'flex';
-          proj.setAttribute('tabindex', '0');
-        } else {
-          proj.style.display = 'none';
-          proj.setAttribute('tabindex', '-1');
-        }
-      });
-    });
-  });
-})();
-
-// Modal functionality for certificates viewer (education.html)
 function setupModalAccessibility() {
-  const modal = document.getElementById('modal');
-  const closeModalBtn = document.querySelector('.close-modal');
-  const focusableSelectors = 'a[href], button:not([disabled]), textarea, input, select';
-  let focusableElements = [];
-  let firstFocusable, lastFocusable;
-
   if (!modal) return;
+  focusableElements = modal.querySelectorAll(focusableSelectors);
+  firstFocusable = focusableElements[0];
+  lastFocusable = focusableElements[focusableElements.length -1];
+  firstFocusable.focus();
 
-  document.querySelectorAll('.open-modal').forEach(btn => {
-    btn.addEventListener('click', () => {
-      modal.style.display = 'flex';
-      modal.setAttribute('aria-hidden', 'false');
-
-      // Setup focus trap
-      focusableElements = modal.querySelectorAll(focusableSelectors);
-      firstFocusable = focusableElements[0];
-      lastFocusable = focusableElements[focusableElements.length -1];
-      firstFocusable.focus();
-    });
-  });
-
-  closeModalBtn.addEventListener('click', closeModal);
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
-  });
   document.addEventListener('keydown', (e) => {
     if (modal.style.display === 'flex') {
       if (e.key === 'Escape') {
         closeModal();
       } else if (e.key === 'Tab') {
-        // Trap focus inside modal
         if (document.activeElement === lastFocusable && !e.shiftKey) {
           e.preventDefault();
           firstFocusable.focus();
@@ -171,98 +78,71 @@ function setupModalAccessibility() {
       }
     }
   });
-
-  function closeModal() {
-    modal.style.display = 'none';
-    modal.setAttribute('aria-hidden', 'true');
-    // Clear iframe and img sources
-    const iframe = modal.querySelector('iframe');
-    const img = modal.querySelector('img');
-    if (iframe) iframe.src = '';
-    if (img) img.src = '';
-  }
 }
 
-// Optional: Smooth scroll for navigation anchors (if needed)
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', e => {
-    e.preventDefault();
-    const target = document.querySelector(anchor.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
+// Open modal for certificates (education.html)
+document.querySelectorAll('.open-modal').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const pdfPath = btn.getAttribute('data-pdf');
+    const imgPath = btn.getAttribute('data-img');
+    pdfViewer.src = pdfPath;
+    pdfViewer.style.display = 'block';
+    codeViewer.style.display = 'none';
+    codeViewer.textContent = '';
+    modalTitle.textContent = "Certificate Preview";
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden', 'false');
+    setupModalAccessibility();
   });
 });
-// Modal functionality for PDF and code viewing
-const modal = document.getElementById('modal');
-const modalTitle = document.getElementById('modalTitle');
-const closeModalBtn = document.querySelector('.close-modal');
-const pdfViewer = document.getElementById('pdf-viewer');
-const codeViewer = document.getElementById('code-viewer');
 
-// Open PDF modal
-document.querySelectorAll('.view-pdf').forEach(el => {
-  el.addEventListener('click', (e) => {
+// Projects modal viewer for pdf and code
+document.querySelectorAll('.view-pdf').forEach(link => {
+  link.addEventListener('click', (e) => {
     e.preventDefault();
-    const src = el.getAttribute('data-src');
-    modalTitle.textContent = `Viewing PDF: ${src.split('/').pop()}`;
+    const src = link.getAttribute('data-src');
     pdfViewer.src = src;
     pdfViewer.style.display = 'block';
     codeViewer.style.display = 'none';
-    showModal();
+    codeViewer.textContent = '';
+    modalTitle.textContent = "Project Report PDF";
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden', 'false');
+    setupModalAccessibility();
   });
 });
-
-// Open code modal (MATLAB .m files)
-document.querySelectorAll('.view-code').forEach(el => {
-  el.addEventListener('click', async (e) => {
+document.querySelectorAll('.view-code').forEach(link => {
+  link.addEventListener('click', (e) => {
     e.preventDefault();
-    const src = el.getAttribute('data-src');
-    modalTitle.textContent = `Viewing Code: ${src.split('/').pop()}`;
-    pdfViewer.style.display = 'none';
-    codeViewer.style.display = 'block';
-    codeViewer.textContent = 'Loading...';
-
-    try {
-      const response = await fetch(src);
-      if (!response.ok) throw new Error('Failed to load file.');
-      const codeText = await response.text();
-      codeViewer.textContent = codeText;
-    } catch (err) {
-      codeViewer.textContent = 'Error loading code file.';
-    }
-    showModal();
+    const src = link.getAttribute('data-src');
+    fetch(src)
+      .then(response => response.text())
+      .then(data => {
+        codeViewer.textContent = data;
+        codeViewer.style.display = 'block';
+        pdfViewer.style.display = 'none';
+        pdfViewer.src = '';
+        modalTitle.textContent = "Project MATLAB Code";
+        modal.style.display = 'flex';
+        modal.setAttribute('aria-hidden', 'false');
+        setupModalAccessibility();
+      })
+      .catch(() => {
+        codeViewer.textContent = "Failed to load code.";
+      });
   });
 });
 
-function showModal() {
-  modal.style.display = 'flex';
-  modal.setAttribute('aria-hidden', 'false');
-  closeModalBtn.focus();
-}
-
-function closeModal() {
-  modal.style.display = 'none';
-  modal.setAttribute('aria-hidden', 'true');
-  pdfViewer.src = '';
-  codeViewer.textContent = '';
-}
-
+// Close modal event listeners
 closeModalBtn.addEventListener('click', closeModal);
-
-modal.addEventListener('click', e => {
+modal.addEventListener('click', (e) => {
   if (e.target === modal) closeModal();
 });
 
-document.addEventListener('keydown', e => {
-  if (modal.style.display === 'flex' && e.key === 'Escape') {
-    closeModal();
-  }
-});
-
-// Project filter buttons
+// Filter buttons for projects page
 const filterButtons = document.querySelectorAll('.filter-btn');
 const projects = document.querySelectorAll('.project-card');
+
 filterButtons.forEach(button => {
   button.addEventListener('click', () => {
     filterButtons.forEach(btn => {
@@ -271,6 +151,7 @@ filterButtons.forEach(button => {
     });
     button.classList.add('active');
     button.setAttribute('aria-pressed', 'true');
+
     const filter = button.getAttribute('data-filter');
     projects.forEach(proj => {
       if (filter === 'all' || proj.getAttribute('data-category') === filter) {
@@ -284,3 +165,6 @@ filterButtons.forEach(button => {
   });
 });
 
+window.addEventListener("DOMContentLoaded", () => {
+  typeText();
+});
