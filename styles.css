@@ -217,7 +217,7 @@ height: 120px;
   background: rgba(0, 154, 176, 0.9);
   padding: 1.6rem;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 4px 12px rgba(0, 154, 176, 0.9);
   color: #d0e7ff;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
