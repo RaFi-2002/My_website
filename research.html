@@ -5,57 +5,179 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Research | Rakibul Hasan Rafi</title>
 <link rel="stylesheet" href="styles.css" />
+<style>
+  /* Container grid for publications */
+  .publications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.8rem;
+    margin-top: 1rem;
+  }
+
+  /* Card style */
+  .publication-card {
+    background: rgba(0, 71, 142, 0.2);
+    padding: 1.6rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+    color: #d0e7ff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .publication-card:hover,
+  .publication-card:focus-within {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(0, 180, 216, 0.5);
+    outline: none;
+  }
+
+  /* Titles */
+  .publication-card h3 {
+    margin-bottom: 0.3rem;
+    color: #a0d8ff;
+    font-size: 1.2rem;
+  }
+  .publication-meta {
+    font-style: italic;
+    color: #9ac9ff;
+    margin-bottom: 1rem;
+  }
+
+  /* Toggle button */
+  .toggle-abstract-btn {
+    background-color: #0077b6;
+    color: #e0e0e0;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 0.8rem;
+    align-self: flex-start;
+  }
+  .toggle-abstract-btn:hover,
+  .toggle-abstract-btn:focus {
+    background-color: #00b4d8;
+    outline: none;
+  }
+
+  /* Abstract section */
+  .abstract {
+    font-size: 0.95rem;
+    color: #c0d9ff;
+    border-top: 1px solid #00b4d866;
+    padding-top: 0.8rem;
+    display: none;
+  }
+  .abstract p {
+    margin-bottom: 0.8rem;
+  }
+  .abstract a {
+    color: #00eaff;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .abstract a:hover,
+  .abstract a:focus {
+    text-decoration: underline;
+    outline: none;
+  }
+</style>
 </head>
 <body>
 <header>
-<h1>Rakibul Hasan Rafi</h1>
-<nav aria-label="Primary navigation">
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="education.html">Education</a></li>
-<li><a href="research.html" aria-current="page">Research</a></li>
-<li><a href="projects.html">Projects</a></li>
-<li><a href="miscellaneous.html">Certifications & Activities</a></li>
-<li><a href="contact.html">Contact</a></li>
-</ul>
-</nav>
+  <h1>Rakibul Hasan Rafi</h1>
+  <nav aria-label="Primary navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="education.html">Education</a></li>
+      <li><a href="research.html" aria-current="page">Research</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="miscellaneous.html">Certifications & Activities</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 </header>
 <main>
-<section>
-<h2>Research Interests</h2>
-<ul>
-<li>Bioprocess Engineering</li>
-<li>Sustainable Chemical Processes</li>
-<li>Wastewater Treatment Technologies</li>
-<li>Computational Modeling & Simulation</li>
-</ul>
-</section>
-<section>
-<h2>Publications</h2>
-<ul>
-<li>
-Rafi, R.H., et al. (2024). <em>Optimization of Enzyme Production Using Bioreactors.</em> <
-<a href="https://doi.org/xxx" target="_blank" rel="noopener">DOI</a>
-</li>
-<li>
-Rafi, R.H., et al. (2023). <em>Modeling of Wastewater Treatment Using Enzymatic Processes
-<a href="https://doi.org/xxx" target="_blank" rel="noopener">DOI</a>
-</li>
-</ul>
-</section>
-<section>
-<h2>Presentations & Posters</h2>
-<ul>
-<li><a href="posters/poster1.pdf" target="_blank" rel="noopener">Conference Poster: Enzymati
-</ul>
-</section>
-<section>
-<h2>Future Research Interests</h2>
-<p>Exploring AI-driven optimization in chemical processes, sustainable biofuels development, a
-</section>
+  <section>
+    <h2>Research Interests</h2>
+    <ul>
+      <li>Bioprocess Engineering</li>
+      <li>Sustainable Chemical Processes</li>
+      <li>Wastewater Treatment Technologies</li>
+      <li>Computational Modeling & Simulation</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Publications</h2>
+    <div class="publications-grid">
+      <article class="publication-card" tabindex="0">
+        <h3>Optimization of Enzyme Production Using Bioreactors (2024)</h3>
+        <p class="publication-meta">Rafi, R.H., et al.</p>
+        <button class="toggle-abstract-btn" aria-expanded="false" aria-controls="abstract1">Show Abstract</button>
+        <div class="abstract" id="abstract1" aria-hidden="true">
+          <p>This paper presents predictive models developed using MATLAB and Python to enhance enzyme production yield in bioreactors. The optimization techniques significantly improved efficiency and output.</p>
+          <a href="https://doi.org/xxx" target="_blank" rel="noopener">Read full paper</a>
+        </div>
+      </article>
+
+      <article class="publication-card" tabindex="0">
+        <h3>Modeling of Wastewater Treatment Using Enzymatic Processes (2023)</h3>
+        <p class="publication-meta">Rafi, R.H., et al.</p>
+        <button class="toggle-abstract-btn" aria-expanded="false" aria-controls="abstract2">Show Abstract</button>
+        <div class="abstract" id="abstract2" aria-hidden="true">
+          <p>This study models enzymatic bioreactor systems for wastewater treatment, focusing on scalability and process optimization for industrial application.</p>
+          <a href="https://doi.org/xxx" target="_blank" rel="noopener">Read full paper</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2>Presentations & Posters</h2>
+    <ul>
+      <li><a href="posters/poster1.pdf" target="_blank" rel="noopener">Conference Poster: Enzymatic Bioreactors</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Future Research Interests</h2>
+    <p>Exploring AI-driven optimization in chemical processes, sustainable biofuels development, and advanced bioreactor design.</p>
+  </section>
 </main>
+
 <footer>
-<p>&copy; 2025 Rakibul Hasan Rafi</p>
+  <p>&copy; 2025 Rakibul Hasan Rafi</p>
 </footer>
+
+<script>
+  // Toggle abstracts visibility
+  document.querySelectorAll('.toggle-abstract-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const abstract = document.getElementById(button.getAttribute('aria-controls'));
+      const expanded = button.getAttribute('aria-expanded') === 'true';
+      
+      if (abstract) {
+        if (expanded) {
+          abstract.style.display = 'none';
+          button.setAttribute('aria-expanded', 'false');
+          button.textContent = 'Show Abstract';
+          abstract.setAttribute('aria-hidden', 'true');
+        } else {
+          abstract.style.display = 'block';
+          button.setAttribute('aria-expanded', 'true');
+          button.textContent = 'Hide Abstract';
+          abstract.setAttribute('aria-hidden', 'false');
+        }
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
