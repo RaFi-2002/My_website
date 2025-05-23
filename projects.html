@@ -8,53 +8,73 @@
 </head>
 <body>
 <header>
-<h1>Rakibul Hasan Rafi</h1>
-<nav aria-label="Primary navigation">
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="education.html">Education</a></li>
-<li><a href="research.html">Research</a></li>
-<li><a href="projects.html" aria-current="page">Projects</a></li>
-<li><a href="miscellaneous.html">Certifications & Activities</a></li>
-<li><a href="contact.html">Contact</a></li>
-</ul>
-</nav>
+  <h1>Rakibul Hasan Rafi</h1>
+  <nav aria-label="Primary navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="education.html">Education</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="projects.html" aria-current="page">Projects</a></li>
+      <li><a href="miscellaneous.html">Certifications & Activities</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 </header>
 <main>
-<section>
-<h2>Academic Research Projects</h2>
-<ul>
-<li>
-<strong>Optimization of Bioprocess Parameters for Enzyme Production (2024)</strong><br/>
-Developed predictive models to enhance yield using MATLAB and Python. Published in Journal
-<a href="https://doi.org/xxx" target="_blank" rel="noopener">View Publication</a>
-</li>
-<li>
-<strong>Wastewater Treatment via Enzymatic Bioreactors (2023)</strong><br/>
-Designed a pilot-scale bioreactor system. Collaborated with XYZ Research Lab.<br/>
-<a href="https://github.com/username/wastewater-project" target="_blank" rel="noopener">Gi
-</li>
-</ul>
-<h2>Course Projects</h2>
-<ul>
-<li>
-<strong>Process Simulation for Chemical Reactors</strong><br/>
-Used Aspen Plus to simulate catalytic reactions with optimization.<br/>
-<a href="projects/ProcessSimulationReport.pdf" target="_blank" rel="noopener">Download Rep
-</li>
-</ul>
-<h2>Personal Projects</h2>
-<ul>
-<li>
-<strong>Automation Tool for Lab Data Processing</strong><br/>
-Developed Python scripts to automate Excel data extraction and visualization.<br/>
-<a href="https://github.com/username/lab-automation" target="_blank" rel="noopener">GitHub
-</li>
-</ul>
-</section>
+  <div class="container">
+
+    <!-- Filter buttons column -->
+    <nav aria-label="Project categories" class="filter-column">
+      <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+      <button class="filter-btn" data-filter="academic" aria-pressed="false">Academic</button>
+      <button class="filter-btn" data-filter="coursework" aria-pressed="false">Coursework</button>
+      <button class="filter-btn" data-filter="personal" aria-pressed="false">Personal</button>
+    </nav>
+
+    <!-- Projects list -->
+    <section class="projects-list">
+      <article class="project-item" data-category="academic">
+        <h3>Optimization of Bioprocess Parameters for Enzyme Production (2024)</h3>
+        <p>Developed predictive models to enhance yield using MATLAB and Python. Published in Journal.</p>
+        <a href="https://doi.org/xxx" target="_blank" rel="noopener">View Publication</a>
+      </article>
+
+      <article class="project-item" data-category="academic">
+        <h3>Wastewater Treatment via Enzymatic Bioreactors (2023)</h3>
+        <p>Designed a pilot-scale bioreactor system. Collaborated with XYZ Research Lab.</p>
+        <a href="https://github.com/username/wastewater-project" target="_blank" rel="noopener">GitHub</a>
+      </article>
+
+      <article class="project-item" data-category="coursework">
+        <h3>Process Simulation for Chemical Reactors</h3>
+        <p>Used Aspen Plus to simulate catalytic reactions with optimization.</p>
+        <a href="projects/ProcessSimulationReport.pdf" target="_blank" rel="noopener">Download Report</a>
+      </article>
+
+      <article class="project-item" data-category="personal">
+        <h3>Automation Tool for Lab Data Processing</h3>
+        <p>Developed Python scripts to automate Excel data extraction and visualization.</p>
+        <a href="https://github.com/username/lab-automation" target="_blank" rel="noopener">GitHub</a>
+      </article>
+    </section>
+
+    <!-- Skills section -->
+    <aside class="skills-section" aria-label="Skills learned">
+      <h2>Skills Learned</h2>
+      <ul>
+        <li>MATLAB Programming</li>
+        <li>Python for Data Analysis</li>
+        <li>Aspen Plus Process Simulation</li>
+        <li>Bioprocess Engineering Techniques</li>
+        <li>Project Design & Management</li>
+      </ul>
+    </aside>
+
+  </div>
 </main>
 <footer>
-<p>&copy; 2025 Rakibul Hasan Rafi</p>
+  <p>&copy; 2025 Rakibul Hasan Rafi</p>
 </footer>
+<script src="script.js"></script>
 </body>
 </html>
