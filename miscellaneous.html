@@ -5,44 +5,214 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Certifications & Activities | Rakibul Hasan Rafi</title>
 <link rel="stylesheet" href="styles.css" />
+<style>
+  /* Responsive grid for certificates */
+  .certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.8rem;
+    margin-top: 1rem;
+  }
+
+  /* Certificate card style */
+  .cert-card {
+    background: #f0f8ff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 71, 142, 0.15);
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+  }
+  .cert-card:hover,
+  .cert-card:focus-within {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 10px 30px rgba(0, 71, 142, 0.35);
+    outline: none;
+  }
+
+  /* Certificate thumbnail */
+  .cert-thumbnail {
+    width: 100%;
+    max-width: 140px;
+    height: 180px;
+    object-fit: contain;
+    margin-bottom: 0.8rem;
+    border-radius: 8px;
+    box-shadow: inset 0 0 12px #a0c8ff;
+    background: white;
+  }
+
+  /* Certificate title */
+  .cert-title {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #004a99;
+    user-select: none;
+  }
+
+  /* Modal backdrop */
+  #modal {
+    display: none;
+    position: fixed;
+    z-index: 1100;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(5px);
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  #modal[aria-hidden="false"] {
+    display: flex;
+  }
+  #modal-content {
+    background: white;
+    border-radius: 12px;
+    max-width: 90vw;
+    max-height: 90vh;
+    width: 800px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  #modal iframe {
+    flex-grow: 1;
+    border: none;
+    border-radius: 0 0 12px 12px;
+  }
+  #modal-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+    font-weight: 700;
+    transition: color 0.3s ease;
+  }
+  #modal-close:hover,
+  #modal-close:focus {
+    color: #0077b6;
+    outline: none;
+  }
+
+  /* Section spacing */
+  section.activities, section.volunteering {
+    margin-top: 3rem;
+  }
+</style>
 </head>
 <body>
 <header>
-<h1>Certifications & Activities</h1>
-<nav aria-label="Primary navigation">
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="education.html">Education</a></li>
-<li><a href="research.html">Research</a></li>
-<li><a href="projects.html">Projects</a></li>
-<li><a href="miscellaneous.html" aria-current="page">Certifications & Activities</a></li>
-<li><a href="contact.html">Contact</a></li>
-</ul>
-</nav>
+  <h1>Certifications & Activities</h1>
+  <nav aria-label="Primary navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="education.html">Education</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="miscellaneous.html" aria-current="page">Certifications & Activities</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 </header>
 <main>
-<section class="certifications">
-<h2>Certifications</h2>
-<ul>
-<li><a href="certificates/aspensimulation.pdf" target="_blank" rel="noopener">Aspen Simulati
-<li><a href="certificates/machinelearning.pdf" target="_blank" rel="noopener">Machine Learni
-<li><a href="certificates/plantvisit.pdf" target="_blank" rel="noopener">Plant Visit</a></li
-</ul>
-</section>
-<section class="activities">
-<h2>Workshops & Talks</h2>
-<ul>
-<li>Workshop on Advanced Process Simulation (2024)</li>
-<li>Guest Speaker at Chemical Engineering Seminar (2025)</li>
-</ul>
-</section>
-<section class="volunteering">
-<h2>Volunteering & Outreach</h2>
-<p>Active volunteer in university STEM outreach programs and community science communication.<
-</section>
+  <section class="certifications">
+    <h2>Certifications</h2>
+    <div class="certifications-grid" role="list">
+      <div class="cert-card" tabindex="0" data-pdf="certificates/aspensimulation.pdf" aria-label="Aspen Simulation Certificate. Press enter to view PDF.">
+        <img src="certificates/thumbnails/aspensimulation.png" alt="Aspen Simulation Certificate Thumbnail" class="cert-thumbnail" />
+        <div class="cert-title">Aspen Simulation</div>
+      </div>
+      <div class="cert-card" tabindex="0" data-pdf="certificates/machinelearning.pdf" aria-label="Machine Learning Certificate. Press enter to view PDF.">
+        <img src="certificates/thumbnails/machinelearning.png" alt="Machine Learning Certificate Thumbnail" class="cert-thumbnail" />
+        <div class="cert-title">Machine Learning</div>
+      </div>
+      <div class="cert-card" tabindex="0" data-pdf="certificates/plantvisit.pdf" aria-label="Plant Visit Certificate. Press enter to view PDF.">
+        <img src="certificates/thumbnails/plantvisit.png" alt="Plant Visit Certificate Thumbnail" class="cert-thumbnail" />
+        <div class="cert-title">Plant Visit</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="activities">
+    <h2>Workshops & Talks</h2>
+    <ul>
+      <li>Workshop on Advanced Process Simulation (2024)</li>
+      <li>Guest Speaker at Chemical Engineering Seminar (2025)</li>
+    </ul>
+  </section>
+
+  <section class="volunteering">
+    <h2>Volunteering & Outreach</h2>
+    <p>Active volunteer in university STEM outreach programs and community science communication.</p>
+  </section>
 </main>
+
+<!-- Modal for PDF Viewer -->
+<div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Certificate PDF Viewer">
+  <div id="modal-content">
+    <button id="modal-close" aria-label="Close PDF viewer">&times;</button>
+    <iframe src="" title="Certificate PDF" id="modal-pdf"></iframe>
+  </div>
+</div>
+
 <footer>
-<p>&copy; 2025 Rakibul Hasan Rafi</p>
+  <p>&copy; 2025 Rakibul Hasan Rafi</p>
 </footer>
+
+<script>
+  const modal = document.getElementById('modal');
+  const modalPdf = document.getElementById('modal-pdf');
+  const modalClose = document.getElementById('modal-close');
+
+  // Open modal when clicking a certificate card
+  document.querySelectorAll('.cert-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const pdfPath = card.getAttribute('data-pdf');
+      modalPdf.src = pdfPath;
+      modal.setAttribute('aria-hidden', 'false');
+      modal.style.display = 'flex';
+      modalClose.focus();
+    });
+    // Keyboard support: Enter or Space opens modal
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.click();
+      }
+    });
+  });
+
+  // Close modal function
+  function closeModal() {
+    modal.setAttribute('aria-hidden', 'true');
+    modal.style.display = 'none';
+    modalPdf.src = '';
+  }
+
+  // Close modal on close button click
+  modalClose.addEventListener('click', closeModal);
+
+  // Close modal on backdrop click
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // Close modal on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.style.display === 'flex') {
+      closeModal();
+    }
+  });
+</script>
 </body>
 </html>
