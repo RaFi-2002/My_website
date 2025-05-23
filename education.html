@@ -5,93 +5,162 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Education & Certificates | Rakibul Hasan Rafi</title>
 <link rel="stylesheet" href="styles.css" />
+<style>
+  /* Modal transcripts list styling */
+  #bsc-transcripts-list ul {
+    list-style-type: disc;
+    padding-left: 1.2rem;
+    font-size: 1rem;
+  }
+  #bsc-transcripts-list ul li {
+    margin-bottom: 0.5rem;
+  }
+  #bsc-transcripts-list ul li a {
+    color: #00b4d8;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  #bsc-transcripts-list ul li a:hover,
+  #bsc-transcripts-list ul li a:focus {
+    text-decoration: underline;
+    outline: none;
+  }
+</style>
 </head>
 <body>
 <header>
-<h1>Education & Certificates</h1>
-<nav aria-label="Primary navigation">
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="education.html" aria-current="page">Education</a></li>
-<li><a href="research.html">Research</a></li>
-<li><a href="projects.html">Projects</a></li>
-<li><a href="miscellaneous.html">Certifications & Activities</a></li>
-<li><a href="contact.html">Contact</a></li>
-</ul>
-</nav>
+  <h1>Education & Certificates</h1>
+  <nav aria-label="Primary navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="education.html" aria-current="page">Education</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="miscellaneous.html">Certifications & Activities</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 </header>
 <main>
-<section class="timeline">
-<article class="degree">
-<h2>B.Sc. Chemical Engineering</h2>
-<p><strong>BUET</strong></p>
-<p><strong>Thesis:</strong> Process Optimization in Biochemical Engineering</p>
-<p><strong>Advisor:</strong> Prof. Dr. Amir Hossain</p>
-<p><strong>Honors:</strong> First Class with Distinction</p>
-<button class="open-modal" data-pdf="certificates/BUET_BSc_ChemicalEngineering.pdf" data-img="certificates/BUET_Logo.png">View Transcript</button>
+  <section class="timeline">
 
-</article>
-<article class="degree">
-<h2>M.Sc. Bioprocess Engineering</h2>
-<p><strong>Institute of Chemical Technology</strong></p>
-<p><strong>Thesis:</strong> Enzymatic Treatment Processes for Wastewater</p>
-<p><strong>Advisor:</strong> Prof. Dr. Saiful Islam</p>
-<p><strong>Honors:</strong> Merit Scholarship Recipient</p>
-<button class="open-modal" data-pdf="certificates/ICT_MSc_BioprocessEngineering.pdf" data-im
-</article>
-</section>
-<!-- Modal -->
-<div id="modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle" aria
-<div class="modal-content">
-<button class="close-modal" aria-label="Close">&times;</button>
-<img id="modal-img" alt="Institution Logo" />
-<iframe src="" id="pdf-viewer" title="PDF Viewer" frameborder="0"></iframe>
-</div>
-</div>
+    <article class="degree">
+      <h2>B.Sc. Chemical Engineering</h2>
+      <p><strong>BUET</strong></p>
+      <p><strong>Thesis:</strong> Process Optimization in Biochemical Engineering</p>
+      <p><strong>Advisor:</strong> Prof. Dr. Amir Hossain</p>
+      <p><strong>Honors:</strong> First Class with Distinction</p>
+      <button class="open-modal-transcripts">View B.Sc. Transcripts</button>
+    </article>
+
+    <article class="degree">
+      <h2>M.Sc. Bioprocess Engineering</h2>
+      <p><strong>Institute of Chemical Technology</strong></p>
+      <p><strong>Thesis:</strong> Enzymatic Treatment Processes for Wastewater</p>
+      <p><strong>Advisor:</strong> Prof. Dr. Saiful Islam</p>
+      <p><strong>Honors:</strong> Merit Scholarship Recipient</p>
+      <button class="open-modal" data-pdf="certificates/ICT_MSc_BioprocessEngineering.pdf" data-img="certificates/ICT_Logo.png">View Transcript</button>
+    </article>
+
+  </section>
+
+  <!-- Modal -->
+  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle" aria-modal="true" tabindex="-1">
+    <div class="modal-content">
+      <button class="close-modal" aria-label="Close">&times;</button>
+      <h2 id="modalTitle"></h2>
+      <img id="modal-img" alt="Institution Logo" />
+      <iframe src="" id="pdf-viewer" title="PDF Viewer" frameborder="0"></iframe>
+
+      <!-- B.Sc. transcripts list, hidden by default -->
+      <div id="bsc-transcripts-list" style="display:none;">
+        <h3>B.Sc. Semester Transcripts</h3>
+        <ul>
+          <li><a href="certificates/BSc_Sem1.pdf" target="_blank" rel="noopener">Semester 1 Transcript</a></li>
+          <li><a href="certificates/BSc_Sem2.pdf" target="_blank" rel="noopener">Semester 2 Transcript</a></li>
+          <li><a href="certificates/BSc_Sem3.pdf" target="_blank" rel="noopener">Semester 3 Transcript</a></li>
+          <li><a href="certificates/BSc_Sem4.pdf" target="_blank" rel="noopener">Semester 4 Transcript</a></li>
+          <li><a href="certificates/BSc_Sem5.pdf" target="_blank" rel="noopener">Semester 5 Transcript</a></li>
+          <li><a href="certificates/BSc_Sem6.pdf" target="_blank" rel="noopener">Semester 6 Transcript</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </main>
 <footer>
-<p>&copy; 2025 Rakibul Hasan Rafi</p>
+  <p>&copy; 2025 Rakibul Hasan Rafi</p>
 </footer>
+
 <script>
-const modal = document.getElementById('modal');
-const pdfViewer = document.getElementById('pdf-viewer');
-const modalImg = document.getElementById('modal-img');
-const openButtons = document.querySelectorAll('.open-modal');
-const closeModalBtn = document.querySelector('.close-modal');
-openButtons.forEach(btn => {
-btn.addEventListener('click', () => {
-const pdfPath = btn.getAttribute('data-pdf');
-const imgPath = btn.getAttribute('data-img');
-pdfViewer.src = pdfPath;
-modalImg.src = imgPath;
-modal.style.display = 'block';
-modal.setAttribute('aria-hidden', 'false');
-});
-});
-closeModalBtn.addEventListener('click', () => {
-modal.style.display = 'none';
-pdfViewer.src = '';
-modalImg.src = '';
-modal.setAttribute('aria-hidden', 'true');
-});
-modal.addEventListener('click', (e) => {
-if (e.target === modal) {
-modal.style.display = 'none';
-pdfViewer.src = '';
-modalImg.src = '';
-modal.setAttribute('aria-hidden', 'true');
-}
-});
-document.addEventListener('keydown', (e) => {
-if (e.key === 'Escape' && modal.style.display === 'block') {
-modal.style.display = 'none';
-pdfViewer.src = '';
-modalImg.src = '';
-modal.setAttribute('aria-hidden', 'true');
-}
-});
+  const modal = document.getElementById('modal');
+  const closeModalBtn = document.querySelector('.close-modal');
+  const pdfViewer = document.getElementById('pdf-viewer');
+  const modalImg = document.getElementById('modal-img');
+  const modalTitle = document.getElementById('modalTitle');
+  const bscTranscriptsList = document.getElementById('bsc-transcripts-list');
+
+  // Open modal for MSc single transcript (existing behavior)
+  document.querySelectorAll('.open-modal').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const pdfPath = btn.getAttribute('data-pdf');
+      const imgPath = btn.getAttribute('data-img');
+
+      // Show PDF viewer and image
+      pdfViewer.src = pdfPath;
+      pdfViewer.style.display = 'block';
+      modalImg.src = imgPath;
+      modalImg.style.display = 'block';
+
+      // Hide transcripts list
+      bscTranscriptsList.style.display = 'none';
+
+      modalTitle.textContent = "Transcript Preview";
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      modal.focus();
+    });
+  });
+
+  // Open modal for BSc transcripts list
+  document.querySelector('.open-modal-transcripts').addEventListener('click', () => {
+    // Hide PDF viewer and image
+    pdfViewer.style.display = 'none';
+    pdfViewer.src = '';
+    modalImg.style.display = 'none';
+    modalImg.src = '';
+
+    // Show the transcripts list
+    bscTranscriptsList.style.display = 'block';
+
+    modalTitle.textContent = 'B.Sc. Semester Transcripts';
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden', 'false');
+    modal.focus();
+  });
+
+  // Close modal function
+  function closeModal() {
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+    pdfViewer.src = '';
+    pdfViewer.style.display = 'none';
+    modalImg.src = '';
+    modalImg.style.display = 'block'; // reset
+    bscTranscriptsList.style.display = 'none';
+    modalTitle.textContent = '';
+  }
+
+  closeModalBtn.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.style.display === 'flex') {
+      closeModal();
+    }
+  });
 </script>
 </body>
 </html>
-  
-  
