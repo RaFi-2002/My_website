@@ -1,109 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Projects | Rakibul Hasan Rafi</title>
-<link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects | Rakibul Hasan Rafi</title>
+  <meta name="description" content="Engineering, computational, and independent projects by Rakibul Hasan Rafi." />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:400,500,700&display=swap"/>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 <header>
   <h1>Projects Portfolio</h1>
+  <nav aria-label="Primary navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="education.html">Education</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="projects.html" aria-current="page">Projects</a></li>
+      <li><a href="miscellaneous.html">Certifications & Activities</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 </header>
-<p class="intro">
-  During my undergraduate studies in Chemical Engineering, I completed several academic and independent projects showcasing simulation, design, and automation skills.
-</p>
-<section class="filter-group" aria-label="Project category filters">
-  <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
-  <button class="filter-btn" data-filter="academic" aria-pressed="false">Academic</button>
-  <button class="filter-btn" data-filter="capstone" aria-pressed="false">Capstone</button>
-  <button class="filter-btn" data-filter="personal" aria-pressed="false">Personal</button>
-  <button class="filter-btn" data-filter="coursework" aria-pressed="false">Coursework</button>
-</section>
-<section class="projects-grid" aria-live="polite" aria-label="List of projects">
-  <article class="project-card" data-category="academic" tabindex="0">
-    <h3 class="project-title">Bioreactor Modeling in MATLAB</h3>
-    <p class="project-meta">Jan 2023 – Apr 2023 | Academic Project</p>
-    <p class="project-desc">
-      Modeled batch and fed-batch bioreactors using Monod and Logistic growth kinetics. Developed simulation scripts and analyzed process efficiencies.
-    </p>
-    <div class="tags">
-      <span class="tag">#Modeling</span>
-      <span class="tag">#MATLAB</span>
-      <span class="tag">#Fermentation</span>
+<main>
+  <p class="intro">
+    During my undergraduate studies in Chemical Engineering, I completed several academic and independent projects showcasing simulation, design, and automation skills.
+  </p>
+  <section class="filter-group" aria-label="Project category filters">
+    <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+    <button class="filter-btn" data-filter="academic" aria-pressed="false">Academic</button>
+    <button class="filter-btn" data-filter="capstone" aria-pressed="false">Capstone</button>
+    <button class="filter-btn" data-filter="personal" aria-pressed="false">Personal</button>
+    <button class="filter-btn" data-filter="coursework" aria-pressed="false">Coursework</button>
+  </section>
+  <section class="projects-grid" aria-live="polite" aria-label="List of projects">
+    <article class="project-card" data-category="academic" tabindex="0">
+      <h3 class="project-title">Bioreactor Modeling in MATLAB</h3>
+      <p class="project-meta">Jan 2023 – Apr 2023 | Academic Project</p>
+      <p class="project-desc">
+        Modeled batch and fed-batch bioreactors using Monod and Logistic growth kinetics. Developed simulation scripts and analyzed process efficiencies.
+      </p>
+      <div class="tags">
+        <span class="tag">#Modeling</span>
+        <span class="tag">#MATLAB</span>
+        <span class="tag">#Fermentation</span>
+      </div>
+      <div class="links">
+        <a href="#" class="view-pdf" data-src="reports/bioreactor_modeling_report.pdf" tabindex="0">View Report (PDF)</a>
+        <a href="#" class="view-code" data-src="matlab/bioreactor_modeling.m" tabindex="0">View MATLAB Code</a>
+      </div>
+    </article>
+    <article class="project-card" data-category="capstone" tabindex="0">
+      <h3 class="project-title">Design of a Pilot Plant for Biohydrogen Production</h3>
+      <p class="project-meta">Aug 2023 – Dec 2023 | Capstone Project</p>
+      <p class="project-desc">
+        Led a team to design a pilot-scale plant incorporating process flow diagrams, economic analysis, and sustainability assessment.
+      </p>
+      <div class="tags">
+        <span class="tag">#Design</span>
+        <span class="tag">#AspenHYSYS</span>
+        <span class="tag">#ProcessSimulation</span>
+      </div>
+      <div class="links">
+        <a href="#" class="view-pdf" data-src="reports/biohydrogen_pilot_plant_design.pdf" tabindex="0">View Report (PDF)</a>
+        <a href="https://github.com/username/biohydrogen-pilot" target="_blank" rel="noopener" tabindex="0">GitHub</a>
+      </div>
+    </article>
+    <article class="project-card" data-category="personal" tabindex="0">
+      <h3 class="project-title">Automated Data Analysis Tool in Python</h3>
+      <p class="project-meta">Jan 2024 – Present | Personal Project</p>
+      <p class="project-desc">
+        Developed a Python tool using pandas and matplotlib for automating data analysis workflows in the lab.
+      </p>
+      <div class="tags">
+        <span class="tag">#Python</span>
+        <span class="tag">#DataAnalysis</span>
+        <span class="tag">#Automation</span>
+      </div>
+      <div class="links">
+        <a href="https://github.com/username/bioprocess-data-tool" target="_blank" rel="noopener" tabindex="0">GitHub</a>
+      </div>
+    </article>
+  </section>
+  <h2>Key Skills</h2>
+  <section class="skills-list" aria-label="Project related skills">
+    <div class="skill-category" tabindex="0">
+      <h3>Wet Lab</h3>
+      <ul>
+        <li>Fermenters</li>
+        <li>Centrifugation</li>
+        <li>Gel Electrophoresis (SDS-PAGE)</li>
+      </ul>
     </div>
-    <div class="links">
-      <a href="#" class="view-pdf" data-src="reports/bioreactor_modeling_report.pdf" tabindex="0">View Report (PDF)</a>
-      <a href="#" class="view-code" data-src="matlab/bioreactor_modeling.m" tabindex="0">View MATLAB Code</a>
+    <div class="skill-category" tabindex="0">
+      <h3>Computational</h3>
+      <ul>
+        <li>MATLAB (Modeling & Simulation)</li>
+        <li>Aspen Plus / Aspen HYSYS</li>
+        <li>Python (Pandas, Matplotlib)</li>
+      </ul>
     </div>
-  </article>
-  <article class="project-card" data-category="capstone" tabindex="0">
-    <h3 class="project-title">Design of a Pilot Plant for Biohydrogen Production</h3>
-    <p class="project-meta">Aug 2023 – Dec 2023 | Capstone Project</p>
-    <p class="project-desc">
-      Led a team to design a pilot-scale plant incorporating process flow diagrams, economic analysis, and sustainability assessment.
-    </p>
-    <div class="tags">
-      <span class="tag">#Design</span>
-      <span class="tag">#AspenHYSYS</span>
-      <span class="tag">#ProcessSimulation</span>
+    <div class="skill-category" tabindex="0">
+      <h3>Data & Analysis</h3>
+      <ul>
+        <li>Excel (Advanced)</li>
+        <li>R Programming</li>
+        <li>GraphPad Prism</li>
+      </ul>
     </div>
-    <div class="links">
-      <a href="#" class="view-pdf" data-src="reports/biohydrogen_pilot_plant_design.pdf" tabindex="0">View Report (PDF)</a>
-      <a href="https://github.com/username/biohydrogen-pilot" target="_blank" rel="noopener" tabindex="0">GitHub</a>
+  </section>
+  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-content">
+      <button class="close-modal" aria-label="Close">&times;</button>
+      <img id="modal-img" alt="" />
+      <h2 id="modalTitle"></h2>
+      <iframe id="pdf-viewer" src="" frameborder="0" style="display:none;"></iframe>
+      <pre id="code-viewer" style="display:none;"></pre>
     </div>
-  </article>
-  <article class="project-card" data-category="personal" tabindex="0">
-    <h3 class="project-title">Automated Data Analysis Tool in Python</h3>
-    <p class="project-meta">Jan 2024 – Present | Personal Project</p>
-    <p class="project-desc">
-      Developed a Python tool using pandas and matplotlib for automating data analysis workflows in the lab.
-    </p>
-    <div class="tags">
-      <span class="tag">#Python</span>
-      <span class="tag">#DataAnalysis</span>
-      <span class="tag">#Automation</span>
-    </div>
-    <div class="links">
-      <a href="https://github.com/username/bioprocess-data-tool" target="_blank" rel="noopener" tabindex="0">GitHub</a>
-    </div>
-  </article>
-</section>
-<h2>Key Skills</h2>
-<section class="skills-list" aria-label="Project related skills">
-  <div class="skill-category" tabindex="0">
-    <h3>Wet Lab</h3>
-    <ul>
-      <li>Fermenters</li>
-      <li>Centrifugation</li>
-      <li>Gel Electrophoresis (SDS-PAGE)</li>
-    </ul>
   </div>
-  <div class="skill-category" tabindex="0">
-    <h3>Computational</h3>
-    <ul>
-      <li>MATLAB (Modeling & Simulation)</li>
-      <li>Aspen Plus / Aspen HYSYS</li>
-      <li>Python (Pandas, Matplotlib)</li>
-    </ul>
-  </div>
-  <div class="skill-category" tabindex="0">
-    <h3>Data & Analysis</h3>
-    <ul>
-      <li>Excel (Advanced)</li>
-      <li>R Programming</li>
-      <li>GraphPad Prism</li>
-    </ul>
-  </div>
-</section>
-<div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modal-content">
-    <button class="close-modal" aria-label="Close">&times;</button>
-    <h2 id="modalTitle"></h2>
-    <iframe id="pdf-viewer" src="" frameborder="0" style="display:none;"></iframe>
-    <pre id="code-viewer" style="display:none;"></pre>
-  </div>
-</div>
-<script src="script.js"></script>
+</main>
+<footer>
+  <p>&copy; 2025 Rakibul Hasan Rafi</p>
+</footer>
+<script src="script.js" defer></script>
 </body>
 </html>
