@@ -94,3 +94,52 @@ target.scrollIntoView({ behavior: 'smooth' });
 }
 });
 });
+const modal = document.getElementById('modal');
+const closeModalBtn = document.querySelector('.close-modal');
+const pdfViewer = document.getElementById('pdf-viewer');
+const modalImg = document.getElementById('modal-img');
+const modalTitle = document.getElementById('modalTitle');
+const bscTranscriptsList = document.getElementById('bsc-transcripts-list');
+
+// Button to open transcripts list
+document.querySelector('.open-modal-transcripts').addEventListener('click', () => {
+  // Hide pdf viewer and image
+  pdfViewer.style.display = 'none';
+  pdfViewer.src = '';
+  modalImg.style.display = 'none';
+  modalImg.src = '';
+  
+  // Show the transcripts list
+  bscTranscriptsList.style.display = 'block';
+  
+  modalTitle.textContent = 'B.Sc. Semester Transcripts';
+  modal.style.display = 'flex';
+  modal.setAttribute('aria-hidden', 'false');
+});
+
+// Close modal resets
+function closeModal() {
+  modal.style.display = 'none';
+  modal.setAttribute('aria-hidden', 'true');
+  
+  pdfViewer.src = '';
+  pdfViewer.style.display = 'none';
+  
+  modalImg.src = '';
+  modalImg.style.display = 'block';
+  
+  bscTranscriptsList.style.display = 'none';
+  
+  modalTitle.textContent = '';
+}
+
+closeModalBtn.addEventListener('click', closeModal);
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) closeModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && modal.style.display === 'flex') {
+    closeModal();
+  }
+});
+
