@@ -2,7 +2,7 @@
 const texts = [
 "Chemical Engineering Student",
 "Aspiring PhD Candidate",
-"Bioprocess Engineering Researcher"
+"Available for remote, voluntary research collaboration in chemical and biochemical engineering"
 ];
 let currentTextIndex = 0;
 let charIndex = 0;
@@ -161,6 +161,35 @@ document.querySelectorAll('.toggle-abstract-btn').forEach(button => {
         abstract.setAttribute('aria-hidden', 'false');
       }
     }
+  });
+});
+// Project filtering buttons functionality
+const filterButtons = document.querySelectorAll('.filter-btn');
+const projectItems = document.querySelectorAll('.project-item');
+
+filterButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    // Remove active from all buttons
+    filterButtons.forEach(btn => {
+      btn.classList.remove('active');
+      btn.setAttribute('aria-pressed', 'false');
+    });
+
+    // Add active to clicked button
+    button.classList.add('active');
+    button.setAttribute('aria-pressed', 'true');
+
+    const filter = button.getAttribute('data-filter');
+
+    projectItems.forEach(item => {
+      if (filter === 'all' || item.getAttribute('data-category') === filter) {
+        item.style.display = 'block';
+        item.setAttribute('tabindex', '0');
+      } else {
+        item.style.display = 'none';
+        item.setAttribute('tabindex', '-1');
+      }
+    });
   });
 });
 
