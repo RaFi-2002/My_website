@@ -5,430 +5,56 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Projects | Rakibul Hasan Rafi</title>
 <link rel="stylesheet" href="styles.css" />
-<style>
-  /* Container and layout */
-  body {
-    max-width: 900px;
-    margin: 2rem auto;
-    font-family: 'Roboto', sans-serif;
-    color: #222;
-    padding: 0 1rem;
-    background: #f9fafb;
-    line-height: 1.5;
-  }
-  header {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  header h1 {
-    font-size: 2.8rem;
-    color: #0077b6;
-    font-weight: 700;
-    font-family: 'Merriweather', serif;
-  }
-  .intro {
-    max-width: 700px;
-    margin: 0 auto 2rem;
-    font-style: italic;
-    color: #444;
-    font-size: 1.1rem;
-    text-align: center;
-  }
-  /* Filter Buttons */
-  .filter-group {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  .filter-btn {
-    cursor: pointer;
-    background: #00b4d8;
-    color: white;
-    border: none;
-    margin: 0 0.5rem 0.5rem 0.5rem;
-    padding: 0.6rem 1.2rem;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: background 0.3s ease;
-  }
-  .filter-btn:hover,
-  .filter-btn.active {
-    background: #0077b6;
-    outline: none;
-  }
-  /* Projects grid */
-  .projects-grid {
-    display: grid;
-    gap: 1.6rem;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  }
-  .project-card {
-    background: white;
-    border-radius: 14px;
-    padding: 1.4rem 1.6rem;
-    box-shadow: 0 6px 15px rgb(0 0 0 / 0.08);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: box-shadow 0.3s ease;
-  }
-  .project-card:hover,
-  .project-card:focus-within {
-    box-shadow: 0 10px 30px rgb(0 0 0 / 0.15);
-    outline: none;
-  }
-  .project-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 0.3rem;
-    color: #0077b6;
-  }
-  .project-meta {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 0.9rem;
-    font-style: italic;
-  }
-  .project-desc {
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 1rem;
-    flex-grow: 1;
-  }
-  .tags {
-    margin-bottom: 1rem;
-  }
-  .tag {
-    display: inline-block;
-    background-color: #caf0f8;
-    color: #0077b6;
-    font-weight: 600;
-    font-size: 0.85rem;
-    padding: 0.25rem 0.6rem;
-    margin-right: 0.4rem;
-    border-radius: 6px;
-    user-select: none;
-  }
-  .links a {
-    font-weight: 600;
-    color: #0077b6;
-    text-decoration: none;
-    margin-right: 1rem;
-    transition: color 0.3s ease;
-    cursor: pointer;
-  }
-  .links a:hover,
-  .links a:focus {
-    color: #00b4d8;
-    outline: none;
-  }
-  /* Skill boxes */
-  .skills-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 1.5rem;
-  }
-  .skill-category {
-    flex: 1 1 200px;
-    background: #e0f7fa;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: inset 0 0 6px #00b4d877;
-  }
-  .skill-category h3 {
-    margin-bottom: 0.5rem;
-    color: #0077b6;
-  }
-  .skill-category ul {
-    list-style: disc inside;
-    color: #004a6e;
-  }
-
-  /* Modal Styling */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1050;
-    left: 0; top: 0;
-    width: 100vw;
-    height: 100vh;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.75);
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    backdrop-filter: blur(5px);
-  }
-  .modal[aria-hidden="false"] {
-    display: flex;
-  }
-  .modal-content {
-    background: #fff;
-    border-radius: 12px;
-    max-width: 90vw;
-    max-height: 90vh;
-    padding: 1rem 1.5rem 2rem;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-  }
-  .close-modal {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    background: transparent;
-    border: none;
-    font-size: 2rem;
-    font-weight: 700;
-    cursor: pointer;
-    color: #555;
-    transition: color 0.3s ease;
-  }
-  .close-modal:hover,
-  .close-modal:focus {
-    color: #0077b6;
-    outline: none;
-  }
-  /* PDF viewer */
-  #pdf-viewer {
-    flex-grow: 1;
-    width: 100%;
-    border-radius: 10px;
-    min-height: 450px;
-  }
-  /* Code viewer */
-  #code-viewer {
-    flex-grow: 1;
-    width: 100%;
-    overflow: auto;
-    background: #1e1e1e;
-    color: #d4d4d4;
-    font-family: Consolas, monospace;
-    font-size: 0.9rem;
-    border-radius: 10px;
-    padding: 1rem;
-    white-space: pre-wrap;
-  }
-  /* Responsive */
-  @media (max-width: 600px) {
-    .project-card {
-      padding: 1.2rem 1rem;
-    }
-    .skill-category {
-      flex: 1 1 100%;
-    }
-  }
-</style>
 </head>
 <body>
 <header>
-  <h1>Projects Portfolio</h1>
+<h1>Rakibul Hasan Rafi</h1>
+<nav aria-label="Primary navigation">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="education.html">Education</a></li>
+<li><a href="research.html">Research</a></li>
+<li><a href="projects.html" aria-current="page">Projects</a></li>
+<li><a href="miscellaneous.html">Certifications & Activities</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</nav>
 </header>
-
-<p class="intro">
-  During my undergraduate studies in Chemical Engineering, I completed several academic and independent projects showcasing simulation, design, and automation skills.
-</p>
-
-<section class="filter-group" aria-label="Project category filters">
-  <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
-  <button class="filter-btn" data-filter="academic" aria-pressed="false">Academic</button>
-  <button class="filter-btn" data-filter="capstone" aria-pressed="false">Capstone</button>
-  <button class="filter-btn" data-filter="personal" aria-pressed="false">Personal</button>
-  <button class="filter-btn" data-filter="coursework" aria-pressed="false">Coursework</button>
+<main>
+<section>
+<h2>Academic Research Projects</h2>
+<ul>
+<li>
+<strong>Optimization of Bioprocess Parameters for Enzyme Production (2024)</strong><br/>
+Developed predictive models to enhance yield using MATLAB and Python. Published in Journal
+<a href="https://doi.org/xxx" target="_blank" rel="noopener">View Publication</a>
+</li>
+<li>
+<strong>Wastewater Treatment via Enzymatic Bioreactors (2023)</strong><br/>
+Designed a pilot-scale bioreactor system. Collaborated with XYZ Research Lab.<br/>
+<a href="https://github.com/username/wastewater-project" target="_blank" rel="noopener">Gi
+</li>
+</ul>
+<h2>Course Projects</h2>
+<ul>
+<li>
+<strong>Process Simulation for Chemical Reactors</strong><br/>
+Used Aspen Plus to simulate catalytic reactions with optimization.<br/>
+<a href="projects/ProcessSimulationReport.pdf" target="_blank" rel="noopener">Download Rep
+</li>
+</ul>
+<h2>Personal Projects</h2>
+<ul>
+<li>
+<strong>Automation Tool for Lab Data Processing</strong><br/>
+Developed Python scripts to automate Excel data extraction and visualization.<br/>
+<a href="https://github.com/username/lab-automation" target="_blank" rel="noopener">GitHub
+</li>
+</ul>
 </section>
-
-<section class="projects-grid" aria-live="polite" aria-label="List of projects">
-
-  <!-- Example Academic Project -->
-  <article class="project-card" data-category="academic" tabindex="0">
-    <h3 class="project-title">Bioreactor Modeling in MATLAB</h3>
-    <p class="project-meta">Jan 2023 – Apr 2023 | Academic Project</p>
-    <p class="project-desc">
-      Modeled batch and fed-batch bioreactors using Monod and Logistic growth kinetics. Developed simulation scripts and analyzed process efficiencies.
-    </p>
-    <div class="tags">
-      <span class="tag">#Modeling</span>
-      <span class="tag">#MATLAB</span>
-      <span class="tag">#Fermentation</span>
-    </div>
-    <div class="links">
-      <!-- Viewer triggers for PDF and MATLAB file -->
-      <a href="#" class="view-pdf" data-src="reports/bioreactor_modeling_report.pdf" tabindex="0">View Report (PDF)</a>
-      <a href="#" class="view-code" data-src="matlab/bioreactor_modeling.m" tabindex="0">View MATLAB Code</a>
-    </div>
-  </article>
-
-  <!-- Capstone Project -->
-  <article class="project-card" data-category="capstone" tabindex="0">
-    <h3 class="project-title">Design of a Pilot Plant for Biohydrogen Production</h3>
-    <p class="project-meta">Aug 2023 – Dec 2023 | Capstone Project</p>
-    <p class="project-desc">
-      Led a team to design a pilot-scale plant incorporating process flow diagrams, economic analysis, and sustainability assessment.
-    </p>
-    <div class="tags">
-      <span class="tag">#Design</span>
-      <span class="tag">#AspenHYSYS</span>
-      <span class="tag">#ProcessSimulation</span>
-    </div>
-    <div class="links">
-      <a href="#" class="view-pdf" data-src="reports/biohydrogen_pilot_plant_design.pdf" tabindex="0">View Report (PDF)</a>
-      <a href="https://github.com/username/biohydrogen-pilot" target="_blank" rel="noopener" tabindex="0">GitHub</a>
-    </div>
-  </article>
-
-  <!-- Personal Project -->
-  <article class="project-card" data-category="personal" tabindex="0">
-    <h3 class="project-title">Automated Data Analysis Tool in Python</h3>
-    <p class="project-meta">Jan 2024 – Present | Personal Project</p>
-    <p class="project-desc">
-      Developed a Python tool using pandas and matplotlib for automating data analysis workflows in the lab.
-    </p>
-    <div class="tags">
-      <span class="tag">#Python</span>
-      <span class="tag">#DataAnalysis</span>
-      <span class="tag">#Automation</span>
-    </div>
-    <div class="links">
-      <a href="https://github.com/username/bioprocess-data-tool" target="_blank" rel="noopener" tabindex="0">GitHub</a>
-    </div>
-  </article>
-
-</section>
-
-<h2>Key Skills</h2>
-<section class="skills-list" aria-label="Project related skills">
-  <div class="skill-category" tabindex="0">
-    <h3>Wet Lab</h3>
-    <ul>
-      <li>Fermenters</li>
-      <li>Centrifugation</li>
-      <li>Gel Electrophoresis (SDS-PAGE)</li>
-    </ul>
-  </div>
-  <div class="skill-category" tabindex="0">
-    <h3>Computational</h3>
-    <ul>
-      <li>MATLAB (Modeling & Simulation)</li>
-      <li>Aspen Plus / Aspen HYSYS</li>
-      <li>Python (Pandas, Matplotlib)</li>
-    </ul>
-  </div>
-  <div class="skill-category" tabindex="0">
-    <h3>Data & Analysis</h3>
-    <ul>
-      <li>Excel (Advanced)</li>
-      <li>R Programming</li>
-      <li>GraphPad Prism</li>
-    </ul>
-  </div>
-</section>
-
-<!-- Modal for PDF / Code Viewer -->
-<div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modal-content">
-    <button class="close-modal" aria-label="Close">&times;</button>
-    <h2 id="modalTitle"></h2>
-    <!-- PDF iframe -->
-    <iframe id="pdf-viewer" src="" frameborder="0" style="display:none;"></iframe>
-    <!-- Code viewer preformatted text -->
-    <pre id="code-viewer" style="display:none;"></pre>
-  </div>
-</div>
-
-<script src="script.js"></script>
-<script>
-  // Modal functionality for PDF and code viewing
-  const modal = document.getElementById('modal');
-  const modalTitle = document.getElementById('modalTitle');
-  const closeModalBtn = document.querySelector('.close-modal');
-  const pdfViewer = document.getElementById('pdf-viewer');
-  const codeViewer = document.getElementById('code-viewer');
-
-  // Open PDF modal
-  document.querySelectorAll('.view-pdf').forEach(el => {
-    el.addEventListener('click', (e) => {
-      e.preventDefault();
-      const src = el.getAttribute('data-src');
-      modalTitle.textContent = `Viewing PDF: ${src.split('/').pop()}`;
-      pdfViewer.src = src;
-      pdfViewer.style.display = 'block';
-      codeViewer.style.display = 'none';
-      showModal();
-    });
-  });
-
-  // Open code modal (MATLAB .m files)
-  document.querySelectorAll('.view-code').forEach(el => {
-    el.addEventListener('click', async (e) => {
-      e.preventDefault();
-      const src = el.getAttribute('data-src');
-      modalTitle.textContent = `Viewing Code: ${src.split('/').pop()}`;
-      pdfViewer.style.display = 'none';
-      codeViewer.style.display = 'block';
-      codeViewer.textContent = 'Loading...';
-
-      try {
-        const response = await fetch(src);
-        if (!response.ok) throw new Error('Failed to load file.');
-        const codeText = await response.text();
-        codeViewer.textContent = codeText;
-      } catch (err) {
-        codeViewer.textContent = 'Error loading code file.';
-      }
-      showModal();
-    });
-  });
-
-  function showModal() {
-    modal.style.display = 'flex';
-    modal.setAttribute('aria-hidden', 'false');
-    // trap focus inside modal
-    closeModalBtn.focus();
-  }
-
-  function closeModal() {
-    modal.style.display = 'none';
-    modal.setAttribute('aria-hidden', 'true');
-    pdfViewer.src = '';
-    codeViewer.textContent = '';
-  }
-
-  closeModalBtn.addEventListener('click', closeModal);
-  modal.addEventListener('click', e => {
-    if (e.target === modal) closeModal();
-  });
-
-  document.addEventListener('keydown', e => {
-    if (modal.style.display === 'flex' && e.key === 'Escape') {
-      closeModal();
-    }
-  });
-
-  // Project filter buttons
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const projects = document.querySelectorAll('.project-card');
-  filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      filterButtons.forEach(btn => {
-        btn.classList.remove('active');
-        btn.setAttribute('aria-pressed', 'false');
-      });
-      button.classList.add('active');
-      button.setAttribute('aria-pressed', 'true');
-      const filter = button.getAttribute('data-filter');
-      projects.forEach(proj => {
-        if (filter === 'all' || proj.getAttribute('data-category') === filter) {
-          proj.style.display = 'flex';
-          proj.setAttribute('tabindex', '0');
-        } else {
-          proj.style.display = 'none';
-          proj.setAttribute('tabindex', '-1');
-        }
-      });
-    });
-  });
-</script>
+</main>
+<footer>
+<p>&copy; 2025 Rakibul Hasan Rafi</p>
+</footer>
 </body>
 </html>
