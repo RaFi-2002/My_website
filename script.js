@@ -1,4 +1,4 @@
-// Typing animation with academic identity text
+// Typing animation for academic identity
 const texts = [
   "Chemical Engineering Student",
   "Aspiring PhD Candidate",
@@ -6,9 +6,9 @@ const texts = [
 ];
 let currentTextIndex = 0;
 let charIndex = 0;
-const typingSpeed = 75;
-const erasingSpeed = 40;
-const delayBetweenTexts = 2000;
+const typingSpeed = 65;
+const erasingSpeed = 30;
+const delayBetweenTexts = 1750;
 const heroTextElement = document.getElementById("hero-text");
 
 function typeText() {
@@ -21,7 +21,6 @@ function typeText() {
     setTimeout(eraseText, delayBetweenTexts);
   }
 }
-
 function eraseText() {
   if (!heroTextElement) return;
   if (charIndex > 0) {
@@ -34,37 +33,40 @@ function eraseText() {
   }
 }
 
-// Modal functionality (for certificates, project pdf/code viewer)
+// Modal accessibility and interactivity
 const modal = document.getElementById('modal');
 const closeModalBtn = document.querySelector('.close-modal');
 const pdfViewer = document.getElementById('pdf-viewer');
 const codeViewer = document.getElementById('code-viewer');
 const modalTitle = document.getElementById('modalTitle');
+const modalImg = document.getElementById('modal-img');
 
 function closeModal() {
+  if (!modal) return;
   modal.style.display = 'none';
   modal.setAttribute('aria-hidden', 'true');
-  pdfViewer.src = '';
-  pdfViewer.style.display = 'none';
-  codeViewer.style.display = 'none';
-  codeViewer.textContent = '';
-  modalTitle.textContent = '';
+  if (pdfViewer) {
+    pdfViewer.src = '';
+    pdfViewer.style.display = 'none';
+  }
+  if (codeViewer) {
+    codeViewer.style.display = 'none';
+    codeViewer.textContent = '';
+  }
+  if (modalTitle) modalTitle.textContent = '';
+  if (modalImg) modalImg.src = '';
 }
-
-// Focus trap inside modal for accessibility
-const focusableSelectors = 'a[href], button:not([disabled]), textarea, input, select';
-let focusableElements = [];
-let firstFocusable, lastFocusable;
 
 function setupModalAccessibility() {
   if (!modal) return;
-  focusableElements = modal.querySelectorAll(focusableSelectors);
-  firstFocusable = focusableElements[0];
-  lastFocusable = focusableElements[focusableElements.length -1];
-  firstFocusable.focus();
+  const focusableSelectors = 'a[href], button:not([disabled]), textarea, input, select, [tabindex="0"]';
+  const focusableElements = modal.querySelectorAll(focusableSelectors);
+  const firstFocusable = focusableElements[0];
+  const lastFocusable = focusableElements[focusableElements.length - 1];
+  if (firstFocusable) firstFocusable.focus();
 
   document.addEventListener('keydown', (e) => {
-    if (modal.style.display === 'flex') {
+    if (modal.style.display === 'flex' || modal.getAttribute('aria-hidden') === 'false') {
       if (e.key === 'Escape') {
         closeModal();
       } else if (e.key === 'Tab') {
@@ -80,32 +82,42 @@ function setupModalAccessibility() {
   });
 }
 
-// Open modal for certificates (education.html)
+// Certificate modal for Education page
 document.querySelectorAll('.open-modal').forEach(btn => {
   btn.addEventListener('click', () => {
     const pdfPath = btn.getAttribute('data-pdf');
     const imgPath = btn.getAttribute('data-img');
-    pdfViewer.src = pdfPath;
-    pdfViewer.style.display = 'block';
-    codeViewer.style.display = 'none';
-    codeViewer.textContent = '';
-    modalTitle.textContent = "Certificate Preview";
+    if (pdfViewer) {
+      pdfViewer.src = pdfPath;
+      pdfViewer.style.display = 'block';
+    }
+    if (codeViewer) {
+      codeViewer.style.display = 'none';
+      codeViewer.textContent = '';
+    }
+    if (modalTitle) modalTitle.textContent = "Certificate Preview";
+    if (modalImg && imgPath) modalImg.src = imgPath;
     modal.style.display = 'flex';
     modal.setAttribute('aria-hidden', 'false');
     setupModalAccessibility();
   });
 });
 
-// Projects modal viewer for pdf and code
+// PDF and code modal for projects
 document.querySelectorAll('.view-pdf').forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
     const src = link.getAttribute('data-src');
-    pdfViewer.src = src;
-    pdfViewer.style.display = 'block';
-    codeViewer.style.display = 'none';
-    codeViewer.textContent = '';
-    modalTitle.textContent = "Project Report PDF";
+    if (pdfViewer) {
+      pdfViewer.src = src;
+      pdfViewer.style.display = 'block';
+    }
+    if (codeViewer) {
+      codeViewer.style.display = 'none';
+      codeViewer.textContent = '';
+    }
+    if (modalTitle) modalTitle.textContent = "Project Report PDF";
+    if (modalImg) modalImg.src = '';
     modal.style.display = 'flex';
     modal.setAttribute('aria-hidden', 'false');
     setupModalAccessibility();
@@ -118,28 +130,31 @@ document.querySelectorAll('.view-code').forEach(link => {
     fetch(src)
       .then(response => response.text())
       .then(data => {
-        codeViewer.textContent = data;
-        codeViewer.style.display = 'block';
-        pdfViewer.style.display = 'none';
-        pdfViewer.src = '';
-        modalTitle.textContent = "Project MATLAB Code";
+        if (codeViewer) {
+          codeViewer.textContent = data;
+          codeViewer.style.display = 'block';
+        }
+        if (pdfViewer) {
+          pdfViewer.style.display = 'none';
+          pdfViewer.src = '';
+        }
+        if (modalTitle) modalTitle.textContent = "Project MATLAB Code";
+        if (modalImg) modalImg.src = '';
         modal.style.display = 'flex';
         modal.setAttribute('aria-hidden', 'false');
         setupModalAccessibility();
       })
       .catch(() => {
-        codeViewer.textContent = "Failed to load code.";
+        if (codeViewer) codeViewer.textContent = "Failed to load code.";
       });
   });
 });
-
-// Close modal event listeners
-closeModalBtn.addEventListener('click', closeModal);
-modal.addEventListener('click', (e) => {
+if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+if (modal) modal.addEventListener('click', (e) => {
   if (e.target === modal) closeModal();
 });
 
-// Filter buttons for projects page
+// Project filtering
 const filterButtons = document.querySelectorAll('.filter-btn');
 const projects = document.querySelectorAll('.project-card');
 
@@ -165,6 +180,7 @@ filterButtons.forEach(button => {
   });
 });
 
+// Animate typing on DOMContentLoaded
 window.addEventListener("DOMContentLoaded", () => {
   typeText();
 });
