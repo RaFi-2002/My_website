@@ -142,4 +142,25 @@ document.addEventListener('keydown', (e) => {
     closeModal();
   }
 });
+// Toggle abstracts visibility for publication cards
+document.querySelectorAll('.toggle-abstract-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    const abstract = document.getElementById(button.getAttribute('aria-controls'));
+    const expanded = button.getAttribute('aria-expanded') === 'true';
+
+    if (abstract) {
+      if (expanded) {
+        abstract.style.display = 'none';
+        button.setAttribute('aria-expanded', 'false');
+        button.textContent = 'Show Abstract';
+        abstract.setAttribute('aria-hidden', 'true');
+      } else {
+        abstract.style.display = 'block';
+        button.setAttribute('aria-expanded', 'true');
+        button.textContent = 'Hide Abstract';
+        abstract.setAttribute('aria-hidden', 'false');
+      }
+    }
+  });
+});
 
