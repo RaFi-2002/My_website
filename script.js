@@ -192,4 +192,47 @@ filterButtons.forEach(button => {
     });
   });
 });
+const modal = document.getElementById('modal');
+const modalPdf = document.getElementById('modal-pdf');
+const modalClose = document.getElementById('modal-close');
+
+// Open modal when clicking a certificate card
+document.querySelectorAll('.cert-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const pdfPath = card.getAttribute('data-pdf');
+    modalPdf.src = pdfPath;
+    modal.setAttribute('aria-hidden', 'false');
+    modal.style.display = 'flex';
+    modalClose.focus();
+  });
+  // Keyboard support: Enter or Space opens modal
+  card.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      card.click();
+    }
+  });
+});
+
+// Close modal function
+function closeModal() {
+  modal.setAttribute('aria-hidden', 'true');
+  modal.style.display = 'none';
+  modalPdf.src = '';
+}
+
+// Close modal on close button click
+modalClose.addEventListener('click', closeModal);
+
+// Close modal on backdrop click
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) closeModal();
+});
+
+// Close modal on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && modal.style.display === 'flex') {
+    closeModal();
+  }
+});
 
