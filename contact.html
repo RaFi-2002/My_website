@@ -4,11 +4,129 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Contact | Rakibul Hasan Rafi</title>
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
 <!-- Font Awesome for icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-<link rel="stylesheet" href="styles.css" />
+<style>
+/* Additional inline styles for contact page */
+.form-group {
+  position: relative;
+  font-size: 1rem;
+  color: #cfd8dc;
+  margin-bottom: 1.5rem;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 14px 14px 14px 14px;
+  background: transparent;
+  border: 2px solid #3a86ff66;
+  border-radius: 10px;
+  color: #eaeaea;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  outline-offset: 2px;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #3a86ff;
+  background-color: rgba(58, 134, 255, 0.1);
+}
+.form-group label {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  padding: 0 6px;
+  color: #a0c4ffaa;
+  font-weight: 500;
+  pointer-events: none;
+  transition: all 0.25s ease;
+  user-select: none;
+}
+.form-group input:not(:placeholder-shown) + label,
+.form-group textarea:not(:placeholder-shown) + label,
+.form-group input:focus + label,
+.form-group textarea:focus + label {
+  top: 0;
+  font-size: 0.75rem;
+  color: #3a86ff;
+  font-weight: 700;
+  transform: translateY(-50%) translateX(0);
+  background: linear-gradient(90deg, #3a86ffcc, #00f0ffcc);
+  border-radius: 4px;
+  padding: 0 6px;
+  text-shadow: 0 0 5px #3a86ffcc;
+}
+textarea {
+  min-height: 110px;
+  resize: vertical;
+  font-family: 'Poppins', sans-serif;
+}
+button.btn {
+  background: linear-gradient(90deg, #3a86ff, #00f0ff);
+  border: none;
+  border-radius: 12px;
+  padding: 14px 0;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #003366;
+  cursor: pointer;
+  box-shadow: 0 0 20px #00f0ff88;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+button.btn:hover,
+button.btn:focus {
+  background: #0077cc;
+  color: #fff;
+  outline: none;
+  box-shadow: 0 0 30px #00f0ffcc;
+}
+.social-links {
+  margin-top: 3rem;
+  text-align: center;
+}
+.social-links h3 {
+  font-weight: 700;
+  color: #caf0f8;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  text-shadow: 0 0 5px #3a86ffaa;
+}
+.social-links a {
+  display: inline-block;
+  margin: 0 0.8rem;
+  color: #a0c4ffcc;
+  font-size: 2.4rem;
+  transition: color 0.4s ease, transform 0.3s ease;
+  position: relative;
+  text-decoration: none;
+}
+.social-links a:hover,
+.social-links a:focus {
+  color: #00f0ff;
+  transform: scale(1.15);
+  outline: none;
+}
+.social-links a::after {
+  content: attr(aria-label);
+  position: absolute;
+  bottom: -1.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  color: #00f0ff;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.social-links a:hover::after,
+.social-links a:focus::after {
+  opacity: 1;
+}
+</style>
 </head>
 <body>
 <header>
@@ -24,34 +142,40 @@
     </ul>
   </nav>
 </header>
+
 <main>
-  <h2>Get in Touch</h2>
-  <form action="https://formspree.io/f/mzzejjqa" method="POST" aria-label="Contact form">
-    <div class="form-group">
-      <input type="text" id="name" name="name" placeholder=" " required />
-      <label for="name">Name</label>
-    </div>
-    <div class="form-group">
-      <input type="email" id="email" name="email" placeholder=" " required />
-      <label for="email">Email</label>
-    </div>
-    <div class="form-group">
-      <textarea id="message" name="message" rows="5" placeholder=" " required></textarea>
-      <label for="message">Message</label>
-    </div>
-    <button class="btn" type="submit">Send Message</button>
-  </form>
+  <section class="contact-form">
+    <h2>Get in Touch</h2>
+    <form action="https://formspree.io/f/mzzejjqa" method="POST" aria-label="Contact form">
+      <div class="form-group">
+        <input type="text" id="name" name="name" placeholder=" " required />
+        <label for="name">Name</label>
+      </div>
+      <div class="form-group">
+        <input type="email" id="email" name="email" placeholder=" " required />
+        <label for="email">Email</label>
+      </div>
+      <div class="form-group">
+        <textarea id="message" name="message" rows="5" placeholder=" " required></textarea>
+        <label for="message">Message</label>
+      </div>
+      <button class="btn" type="submit">Send Message</button>
+    </form>
+  </section>
+
   <section class="social-links" aria-label="Social media links">
     <h3>Connect with Me</h3>
-    <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
-    <a href="https://github.com/yourprofile" target="_blank" rel="noopener" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
-    <a href="https://scholar.google.com/citations?user=yourID" target="_blank" rel="noopener" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
+    <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/yourprofile" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://scholar.google.com/citations?user=yourID" target="_blank" rel="noopener" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
     <a href="mailto:youremail@example.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
   </section>
 </main>
+
 <footer>
   <p>&copy; 2025 Rakibul Hasan Rafi</p>
 </footer>
+
 <script src="script.js"></script>
 </body>
 </html>
