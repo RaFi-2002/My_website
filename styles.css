@@ -284,3 +284,118 @@ height: 120px;
   text-decoration: underline;
   outline: none;
 }
+/* Container to hold filter buttons and project list side-by-side */
+.container {
+  display: flex;
+  gap: 2rem;
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  flex-wrap: wrap;
+}
+
+/* Filter buttons vertical column */
+.filter-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 160px;
+}
+
+.filter-btn {
+  background-color: #0077b6;
+  color: white;
+  border: none;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+.filter-btn:hover,
+.filter-btn:focus,
+.filter-btn.active {
+  background-color: #00b4d8;
+  outline: none;
+}
+
+/* Projects list takes remaining space */
+.projects-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+/* Individual project items styling */
+.project-item {
+  background: rgba(0, 71, 142, 0.15);
+  padding: 1rem 1.2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  color: #003366;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.project-item:hover,
+.project-item:focus-within {
+  box-shadow: 0 8px 20px rgba(0, 71, 142, 0.3);
+  transform: translateY(-4px);
+  outline: none;
+}
+.project-item h3 {
+  margin-bottom: 0.4rem;
+  color: #0077b6;
+}
+.project-item p {
+  margin-bottom: 0.6rem;
+}
+.project-item a {
+  color: #004a99;
+  font-weight: 600;
+  text-decoration: none;
+}
+.project-item a:hover,
+.project-item a:focus {
+  text-decoration: underline;
+  outline: none;
+}
+
+/* Skills section styling */
+.skills-section {
+  flex-basis: 100%;
+  margin-top: 3rem;
+  background: #e0f0ff;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: inset 0 0 12px #a0c8ff;
+  color: #003366;
+}
+.skills-section h2 {
+  margin-bottom: 1rem;
+}
+.skills-section ul {
+  list-style-type: disc;
+  padding-left: 1.2rem;
+}
+.skills-section li {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+/* Responsive: stack vertically on small screens */
+@media (max-width: 700px) {
+  .container {
+    flex-direction: column;
+  }
+  .filter-column {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    min-width: auto;
+    margin-bottom: 1.5rem;
+  }
+  .skills-section {
+    margin-top: 2rem;
+  }
+}
