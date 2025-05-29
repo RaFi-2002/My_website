@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Professional Experience | Rakibul Hasan Rafi</title>
+<title>Professional Experience & Certificates | Rakibul Hasan Rafi</title>
 <link rel="stylesheet" href="styles.css" />
 <style>
+  /* === Navigation and layout (similar to your previous pages) === */
   body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -13,18 +14,15 @@
     background: #f9fbfd;
     padding: 2rem;
   }
-
   header, main, footer {
     max-width: 900px;
     margin: 0 auto;
   }
-
   header h1 {
     font-weight: 700;
     font-size: 2.2rem;
     margin-bottom: 1rem;
   }
-
   nav[aria-label="Primary navigation"] ul {
     display: flex;
     gap: 1rem;
@@ -32,14 +30,12 @@
     list-style: none;
     margin-bottom: 2rem;
   }
-
   nav a {
     text-decoration: none;
     color: #004a99;
     font-weight: 600;
     padding: 0.3rem 0.5rem;
   }
-
   nav a[aria-current="page"],
   nav a:hover,
   nav a:focus {
@@ -48,22 +44,21 @@
     border-radius: 6px;
     outline: none;
   }
-
   h2 {
     border-bottom: 3px solid #0077b6;
     padding-bottom: 0.3rem;
     margin-bottom: 1rem;
   }
-
-  section.experience-section {
+  section.experience-section,
+  section.certificates-section {
     margin-bottom: 3rem;
   }
 
+  /* === Experience Cards === */
   .experience-list {
     display: grid;
     gap: 1.5rem;
   }
-
   .experience-card {
     background: #e6f0ff;
     border-radius: 12px;
@@ -73,43 +68,130 @@
     cursor: default;
     user-select: none;
   }
-
   .experience-card:focus-within,
   .experience-card:hover {
     transform: translateY(-5px) scale(1.02);
     box-shadow: 0 10px 30px rgba(0, 71, 142, 0.25);
     outline: none;
   }
-
   .exp-title {
     font-weight: 700;
     font-size: 1.2rem;
     margin-bottom: 0.3rem;
   }
-
   .exp-role {
     font-style: italic;
     margin-bottom: 0.5rem;
     color: #003366;
   }
-
   .exp-details {
     font-size: 0.95rem;
     color: #00264d;
   }
 
-  /* Responsive grid for desktop */
+  /* Responsive grid for experience cards */
   @media (min-width: 600px) {
     .experience-list {
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
   }
 
+  /* === Certificates Grid and Cards === */
+  .certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.8rem;
+    margin-top: 1rem;
+  }
+  .cert-card {
+    background: #f0f8ff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 71, 142, 0.15);
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+  }
+  .cert-card:hover,
+  .cert-card:focus-within {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 10px 30px rgba(0, 71, 142, 0.35);
+    outline: none;
+  }
+  .cert-thumbnail {
+    width: 100%;
+    max-width: 140px;
+    height: 180px;
+    object-fit: contain;
+    margin-bottom: 0.8rem;
+    border-radius: 8px;
+    box-shadow: inset 0 0 12px #a0c8ff;
+    background: white;
+  }
+  .cert-title {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #004a99;
+    user-select: none;
+  }
+
+  /* === Modal backdrop === */
+  #modal {
+    display: none;
+    position: fixed;
+    z-index: 1100;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(5px);
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  #modal[aria-hidden="false"] {
+    display: flex;
+  }
+  #modal-content {
+    background: white;
+    border-radius: 12px;
+    max-width: 90vw;
+    max-height: 90vh;
+    width: 800px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  #modal iframe {
+    flex-grow: 1;
+    border: none;
+    border-radius: 0 0 12px 12px;
+  }
+  #modal-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+    font-weight: 700;
+    transition: color 0.3s ease;
+  }
+  #modal-close:hover,
+  #modal-close:focus {
+    color: #0077b6;
+    outline: none;
+  }
 </style>
 </head>
 <body>
 <header>
-  <h1>Professional Experience</h1>
+  <h1>Professional Experience & Certificates</h1>
   <nav aria-label="Primary navigation">
     <ul>
       <li><a href="index.html">Home</a></li>
@@ -123,6 +205,7 @@
 </header>
 
 <main>
+  <!-- Industrial Experience Section -->
   <section class="experience-section" aria-labelledby="industrial-experience-title">
     <h2 id="industrial-experience-title">Industrial Experience</h2>
     <div class="experience-list" role="list">
@@ -145,6 +228,7 @@
     </div>
   </section>
 
+  <!-- Tutoring Experience Section -->
   <section class="experience-section" aria-labelledby="tutoring-experience-title">
     <h2 id="tutoring-experience-title">Tutoring Experience</h2>
     <div class="experience-list" role="list">
@@ -173,11 +257,84 @@
       </article>
     </div>
   </section>
+
+  <!-- Certificates Section -->
+  <section class="certificates-section" aria-labelledby="certificates-title">
+    <h2 id="certificates-title">Certificates</h2>
+    <div class="certifications-grid" role="list">
+      <div class="cert-card" tabindex="0" data-pdf="certificates/comsol_short_course.pdf" aria-label="COMSOL Multiphysics Short Course Certificate. Press enter to view PDF.">
+        <img src="certificates/thumbnails/comsol_short_course.png" alt="COMSOL Multiphysics Certificate Thumbnail" class="cert-thumbnail" />
+        <div class="cert-title">COMSOL Multiphysics Short Course</div>
+      </div>
+      <div class="cert-card" tabindex="0" data-pdf="certificates/python_tutoring.pdf" aria-label="Python Tutoring Certificate. Press enter to view PDF.">
+        <img src="certificates/thumbnails/python_tutoring.png" alt="Python Tutoring Certificate Thumbnail" class="cert-thumbnail" />
+        <div class="cert-title">Python Tutoring Certificate</div>
+      </div>
+      <div class="cert-card" tabindex="0" data-pdf="certificates/advanced_process_simulation.pdf" aria-label="Advanced Process Simulation Certificate. Press enter to view PDF.">
+        <img src="certificates/thumbnails/advanced_process_simulation.png" alt="Advanced Process Simulation Certificate Thumbnail" class="cert-thumbnail" />
+        <div class="cert-title">Advanced Process Simulation</div>
+      </div>
+      <!-- Add more certificates here with the same structure -->
+    </div>
+  </section>
 </main>
+
+<!-- Modal for PDF Viewer -->
+<div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Certificate PDF Viewer">
+  <div id="modal-content">
+    <button id="modal-close" aria-label="Close PDF viewer">&times;</button>
+    <iframe src="" title="Certificate PDF" id="modal-pdf"></iframe>
+  </div>
+</div>
 
 <footer>
   <p>&copy; 2025 Rakibul Hasan Rafi</p>
 </footer>
 
+<script>
+  const modal = document.getElementById('modal');
+  const modalPdf = document.getElementById('modal-pdf');
+  const modalClose = document.getElementById('modal-close');
+
+  // Open modal when clicking a certificate card
+  document.querySelectorAll('.cert-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const pdfPath = card.getAttribute('data-pdf');
+      modalPdf.src = pdfPath;
+      modal.setAttribute('aria-hidden', 'false');
+      modal.style.display = 'flex';
+      modalClose.focus();
+    });
+    // Keyboard support: Enter or Space opens modal
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.click();
+      }
+    });
+  });
+
+  // Close modal function
+  function closeModal() {
+    modal.setAttribute('aria-hidden', 'true');
+    modal.style.display = 'none';
+    modalPdf.src = '';
+  }
+
+  // Close modal on close button click
+  modalClose.addEventListener('click', closeModal);
+
+  // Close modal on backdrop click
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // Close modal on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.style.display === 'flex') {
+      closeModal();
+    }
+  });
+</script>
 </body>
 </html>
