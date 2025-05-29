@@ -501,3 +501,65 @@ height: 120px;
 section.activities, section.volunteering {
   margin-top: 3rem;
 }
+.social-icons {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.social-link {
+  color: #0077b5; /* LinkedIn blue, change accordingly */
+  transition: color 0.3s ease;
+}
+
+.social-link:hover,
+.social-link:focus {
+  color: #005582; /* Darker hover */
+  outline: none;
+}
+
+/* Different colors per platform if you want */
+.social-link[href*="github"] { color: #333; }
+.social-link[href*="github"]:hover { color: #6cc644; }
+
+.social-link[href*="scholar"] { color: #4285f4; }
+.social-link[href*="scholar"]:hover { color: #3367d6; }
+
+
+.social-link[href^="mailto"] { color: #ea4335; }
+.social-link[href^="mailto"]:hover { color: #bb2d25; }
+
+/* Form improvements */
+.contact-form label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.contact-form .btn {
+  margin-top: 1rem;
+  background-color: #0077b5;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form .btn:hover,
+.contact-form .btn:focus {
+  background-color: #005582;
+  outline: none;
+}
