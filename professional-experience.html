@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Professional Experience | Rakibul Hasan Rafi</title>
+<link rel="stylesheet" href="styles.css" />
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #004a99;
+    background: #f9fbfd;
+    padding: 2rem;
+  }
+
+  header, main, footer {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  header h1 {
+    font-weight: 700;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+
+  nav[aria-label="Primary navigation"] ul {
+    display: flex;
+    gap: 1rem;
+    padding-left: 0;
+    list-style: none;
+    margin-bottom: 2rem;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: #004a99;
+    font-weight: 600;
+    padding: 0.3rem 0.5rem;
+  }
+
+  nav a[aria-current="page"],
+  nav a:hover,
+  nav a:focus {
+    background-color: #0077b6;
+    color: white;
+    border-radius: 6px;
+    outline: none;
+  }
+
+  h2 {
+    border-bottom: 3px solid #0077b6;
+    padding-bottom: 0.3rem;
+    margin-bottom: 1rem;
+  }
+
+  section.experience-section {
+    margin-bottom: 3rem;
+  }
+
+  .experience-list {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .experience-card {
+    background: #e6f0ff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 71, 142, 0.1);
+    padding: 1.2rem 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+    user-select: none;
+  }
+
+  .experience-card:focus-within,
+  .experience-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(0, 71, 142, 0.25);
+    outline: none;
+  }
+
+  .exp-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .exp-role {
+    font-style: italic;
+    margin-bottom: 0.5rem;
+    color: #003366;
+  }
+
+  .exp-details {
+    font-size: 0.95rem;
+    color: #00264d;
+  }
+
+  /* Responsive grid for desktop */
+  @media (min-width: 600px) {
+    .experience-list {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+  }
+
+</style>
+</head>
+<body>
+<header>
+  <h1>Professional Experience</h1>
+  <nav aria-label="Primary navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="education.html">Education</a></li>
+      <li><a href="professional-experience.html" aria-current="page">Experience</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="miscellaneous.html">Certifications & Activities</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="experience-section" aria-labelledby="industrial-experience-title">
+    <h2 id="industrial-experience-title">Industrial Experience</h2>
+    <div class="experience-list" role="list">
+      <article class="experience-card" tabindex="0" role="listitem" aria-label="Process Engineer at ABC Chemicals from 2023 to Present">
+        <div class="exp-title">ABC Chemicals Ltd.</div>
+        <div class="exp-role">Process Engineer (2023 – Present)</div>
+        <p class="exp-details">
+          Managed process optimization projects, ensuring improved efficiency and safety standards in chemical production.  
+          Collaborated with R&D teams to develop new formulations.
+        </p>
+      </article>
+      <article class="experience-card" tabindex="0" role="listitem" aria-label="Internship at XYZ Petrochemical from June 2022 to August 2022">
+        <div class="exp-title">XYZ Petrochemical</div>
+        <div class="exp-role">Intern – Process Engineering (Jun 2022 – Aug 2022)</div>
+        <p class="exp-details">
+          Assisted senior engineers in process simulation tasks and conducted safety audits on site.  
+          Gained hands-on experience with COMSOL Multiphysics and Aspen Plus.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="experience-section" aria-labelledby="tutoring-experience-title">
+    <h2 id="tutoring-experience-title">Tutoring Experience</h2>
+    <div class="experience-list" role="list">
+      <article class="experience-card" tabindex="0" role="listitem" aria-label="Online Python Tutor at CodeLearn from 2021 to Present">
+        <div class="exp-title">CodeLearn (Online)</div>
+        <div class="exp-role">Python Tutor (2021 – Present)</div>
+        <p class="exp-details">
+          Conduct interactive sessions on Python programming for beginners and intermediate students via Zoom and Google Meet.  
+          Tailored lessons to individual student needs.
+        </p>
+      </article>
+      <article class="experience-card" tabindex="0" role="listitem" aria-label="In-Person Math Tutor at City Tutoring Center from 2020 to 2022">
+        <div class="exp-title">City Tutoring Center</div>
+        <div class="exp-role">Math Tutor (2019 – 2022)</div>
+        <p class="exp-details">
+          Provided in-person tutoring in calculus and algebra to high school and university students.  
+          Developed custom worksheets and practice tests.
+        </p>
+      </article>
+      <article class="experience-card" tabindex="0" role="listitem" aria-label="Private Tutor for Chemistry and Physics from 2018 to Present">
+        <div class="exp-title">Private Tutoring</div>
+        <div class="exp-role">Chemistry & Physics Tutor (2018 – Present)</div>
+        <p class="exp-details">
+          Conducted one-on-one tutoring sessions at students’ homes and libraries focusing on conceptual understanding and problem solving.
+        </p>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Rakibul Hasan Rafi</p>
+</footer>
+
+</body>
+</html>
