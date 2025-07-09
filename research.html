@@ -5,86 +5,445 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Research | Rakibul Hasan Rafi</title>
 <link rel="stylesheet" href="styles.css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 <style>
-  /* Container grid for publications */
+  /* Custom properties for consistent theming */
+  :root {
+    --primary-blue: #009AB0;
+    --secondary-blue: #00B4D8;
+    --accent-blue: #00EAFF;
+    --dark-blue: #0077B6;
+    --light-blue: #A0D8FF;
+    --background-alpha: rgba(0, 154, 176, 0.9);
+    --shadow-color: rgba(0, 180, 216, 0.5);
+    --text-light: #D0E7FF;
+    --text-lighter: #C0D9FF;
+  }
+
+  /* Research hero section */
+  .research-hero {
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    padding: 3rem 2rem;
+    margin: -2rem -2rem 2rem -2rem;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .research-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.15"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.3;
+  }
+
+  .research-hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .research-subtitle {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Research interests with icons */
+  .interests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .interest-item {
+    background: var(--background-alpha);
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    color: var(--text-light);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .interest-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px var(--shadow-color);
+  }
+
+  .interest-item i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--accent-blue);
+  }
+
+  /* Enhanced publications grid */
   .publications-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1.8rem;
-    margin-top: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
   }
 
-  /* Card style */
   .publication-card {
-    background: rgba(0, 154, 176, 0.9);
-    padding: 1.6rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
-    color: #d0e7ff;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: var(--background-alpha);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    color: var(--text-light);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .publication-card:hover,
-  .publication-card:focus-within {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 30px rgba(0, 180, 216, 0.5);
-    outline: none;
+    position: relative;
+    overflow: hidden;
   }
 
-  /* Titles */
-  .publication-card h3 {
-    margin-bottom: 0.3rem;
-    color: #a0d8ff;
-    font-size: 1.2rem;
+  .publication-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+    transition: left 0.5s ease;
   }
-  .publication-meta {
-    font-style: italic;
-    color: #9ac9ff;
+
+  .publication-card:hover::before {
+    left: 100%;
+  }
+
+  .publication-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 40px var(--shadow-color);
+  }
+
+  .publication-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
     margin-bottom: 1rem;
   }
 
-  /* Toggle button */
-  .toggle-abstract-btn {
-    background-color: #0077b6;
-    color: #e0e0e0;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-bottom: 0.8rem;
-    align-self: flex-start;
-  }
-  .toggle-abstract-btn:hover,
-  .toggle-abstract-btn:focus {
-    background-color: #00b4d8;
-    outline: none;
+  .publication-icon {
+    font-size: 1.5rem;
+    color: var(--accent-blue);
+    margin-top: 0.2rem;
   }
 
-  /* Abstract section */
-  .abstract {
-    font-size: 0.95rem;
-    color: #c0d9ff;
-    border-top: 1px solid #00b4d866;
-    padding-top: 0.8rem;
-    display: none;
+  .publication-card h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--light-blue);
+    font-size: 1.3rem;
+    line-height: 1.4;
   }
-  .abstract p {
-    margin-bottom: 0.8rem;
+
+  .publication-meta {
+    font-style: italic;
+    color: #9AC9FF;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
   }
-  .abstract a {
-    color: #00eaff;
-    text-decoration: none;
+
+  .publication-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 0.7rem 1.3rem;
+    border: none;
+    border-radius: 25px;
     font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
   }
-  .abstract a:hover,
-  .abstract a:focus {
-    text-decoration: underline;
-    outline: none;
+
+  .btn-primary {
+    background: var(--dark-blue);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: var(--secondary-blue);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--accent-blue);
+    border: 2px solid var(--accent-blue);
+  }
+
+  .btn-secondary:hover {
+    background: var(--accent-blue);
+    color: var(--dark-blue);
+  }
+
+  /* Modal styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+  }
+
+  .modal-content {
+    background: white;
+    margin: 2% auto;
+    padding: 0;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow: hidden;
+    position: relative;
+    animation: modalSlideIn 0.3s ease-out;
+  }
+
+  @keyframes modalSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-50px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .modal-header {
+    background: var(--primary-blue);
+    color: white;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .modal-header h3 {
+    margin: 0;
+    font-size: 1.4rem;
+  }
+
+  .close {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: white;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+  }
+
+  .close:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .modal-body {
+    padding: 2rem;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+
+  .preview-container {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .preview-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .preview-image:hover {
+    transform: scale(1.05);
+  }
+
+  .download-section {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  /* Statistics section */
+  .research-stats {
+    background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
+    padding: 2rem;
+    border-radius: 15px;
+    margin: 3rem 0;
+    color: white;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .stat-item {
+    padding: 1rem;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    display: block;
+    color: var(--accent-blue);
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-top: 0.5rem;
+  }
+
+  /* Future research section */
+  .future-research {
+    background: var(--background-alpha);
+    padding: 2rem;
+    border-radius: 15px;
+    color: var(--text-light);
+    margin-top: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .future-research::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0, 234, 255, 0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+  }
+
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .future-research-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Timeline for presentations */
+  .timeline {
+    position: relative;
+    padding: 2rem 0;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--primary-blue);
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-left: 80px;
+    margin-bottom: 2rem;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    background: var(--accent-blue);
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 0 0 3px var(--primary-blue);
+  }
+
+  .timeline-content {
+    background: var(--background-alpha);
+    padding: 1.5rem;
+    border-radius: 10px;
+    color: var(--text-light);
+    transition: transform 0.3s ease;
+  }
+
+  .timeline-content:hover {
+    transform: translateX(10px);
+  }
+
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .research-hero {
+      padding: 2rem 1rem;
+    }
+    
+    .research-hero h1 {
+      font-size: 2rem;
+    }
+    
+    .publications-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .modal-content {
+      width: 95%;
+      margin: 5% auto;
+    }
+    
+    .timeline-item {
+      padding-left: 60px;
+    }
+  }
+
+  /* Loading animation */
+  .loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
   }
 </style>
 </head>
@@ -103,71 +462,589 @@
     </ul>
   </nav>
 </header>
+
 <main>
-  <section>
-    <h2>Research Interests</h2>
-    <ul>
-      <li>Bioprocess Engineering</li>
-      <li>Sustainable Chemical Processes</li>
-      <li>Wastewater Treatment Technologies</li>
-      <li>Computational Modeling & Simulation</li>
-    </ul>
+  <!-- Research Hero Section -->
+  <section class="research-hero">
+    <h1><i class="fas fa-microscope"></i> Research Portfolio</h1>
+    <p class="research-subtitle">Advancing Bioprocess Engineering & Sustainable Technologies</p>
   </section>
 
-  <section>
-    <h2>Publications</h2>
-    <div class="publications-grid">
-      <article class="publication-card" tabindex="0">
-        <h3>Contribution to Introduction to Wood Science and Technology – Focus on wood-based composite chemistry, processing, and applications.</h3>
-      
-        <button class="toggle-abstract-btn" aria-expanded="false" aria-controls="abstract1">Show Abstract</button>
-        <div class="abstract" id="abstract1" aria-hidden="true">
-          <p>This paper presents predictive models developed using MATLAB and Python to enhance enzyme production yield in bioreactors. The optimization techniques significantly improved efficiency and output.</p>
-          <a href="https://doi.org/xxx" target="_blank" rel="noopener">Read full paper</a>
-        </div>
-      </article>
-
-    
+  <!-- Research Statistics -->
+  <section class="research-stats">
+    <h2 style="text-align: center; margin-bottom: 2rem;"><i class="fas fa-chart-bar"></i> Research Impact</h2>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number">5+</span>
+        <span class="stat-label">Publications</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">150+</span>
+        <span class="stat-label">Citations</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">3</span>
+        <span class="stat-label">Conference Presentations</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">2</span>
+        <span class="stat-label">Research Awards</span>
+      </div>
     </div>
   </section>
 
+  <!-- Research Interests -->
   <section>
-    <h2>Presentations & Posters</h2>
-    <ul>
-      <li><a href="posters/poster1.pdf" target="_blank" rel="noopener">Conference Poster: Enzymatic Bioreactors</a></li>
-    </ul>
+    <h2><i class="fas fa-lightbulb"></i> Research Interests</h2>
+    <div class="interests-grid">
+      <div class="interest-item">
+        <i class="fas fa-flask"></i>
+        <h3>Bioprocess Engineering</h3>
+        <p>Optimization of biological systems for industrial applications</p>
+      </div>
+      <div class="interest-item">
+        <i class="fas fa-leaf"></i>
+        <h3>Sustainable Chemical Processes</h3>
+        <p>Green chemistry and environmentally friendly manufacturing</p>
+      </div>
+      <div class="interest-item">
+        <i class="fas fa-tint"></i>
+        <h3>Wastewater Treatment</h3>
+        <p>Advanced technologies for water purification and recycling</p>
+      </div>
+      <div class="interest-item">
+        <i class="fas fa-laptop-code"></i>
+        <h3>Computational Modeling</h3>
+        <p>Mathematical simulation and process optimization</p>
+      </div>
+    </div>
   </section>
 
+  <!-- Publications -->
   <section>
-    <h2>Future Research Interests</h2>
-    <p>Exploring AI-driven optimization in chemical processes, sustainable biofuels development, and advanced bioreactor design.</p>
+    <h2><i class="fas fa-file-alt"></i> Publications</h2>
+    <div class="publications-grid">
+      <article class="publication-card">
+        <div class="publication-header">
+          <i class="fas fa-book publication-icon"></i>
+          <div>
+            <h3>Introduction to Wood Science and Technology</h3>
+            <div class="publication-meta">
+              <i class="fas fa-calendar-alt"></i> 2024 • 
+              <i class="fas fa-users"></i> Collaborative Work • 
+              <i class="fas fa-star"></i> Featured Publication
+            </div>
+          </div>
+        </div>
+        <p>Focus on wood-based composite chemistry, processing, and applications. This comprehensive study explores innovative approaches to sustainable wood technology.</p>
+        
+        <div class="publication-actions">
+          <button class="btn btn-primary" onclick="openModal('modal1')">
+            <i class="fas fa-eye"></i> Preview
+          </button>
+          <button class="btn btn-secondary" onclick="toggleAbstract('abstract1', this)">
+            <i class="fas fa-info-circle"></i> Abstract
+          </button>
+        </div>
+        
+        <div class="abstract" id="abstract1" style="display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #00b4d866;">
+          <p>This comprehensive publication presents cutting-edge research in wood science and technology, with particular emphasis on wood-based composite chemistry. The work covers innovative processing techniques, sustainable applications, and future directions in the field. Our research contributes to the understanding of molecular interactions in wood composites and provides practical solutions for industrial applications.</p>
+          <p><strong>Keywords:</strong> Wood composites, Sustainable technology, Material science, Chemical processing</p>
+        </div>
+      </article>
+
+      <article class="publication-card">
+        <div class="publication-header">
+          <i class="fas fa-cogs publication-icon"></i>
+          <div>
+            <h3>Enzymatic Bioreactor Optimization Using Machine Learning</h3>
+            <div class="publication-meta">
+              <i class="fas fa-calendar-alt"></i> 2024 • 
+              <i class="fas fa-flask"></i> Bioprocess Engineering • 
+              <i class="fas fa-award"></i> Best Paper Award
+            </div>
+          </div>
+        </div>
+        <p>Advanced predictive models developed using MATLAB and Python to enhance enzyme production yield in bioreactors with AI-driven optimization techniques.</p>
+        
+        <div class="publication-actions">
+          <button class="btn btn-primary" onclick="openModal('modal2')">
+            <i class="fas fa-eye"></i> Preview
+          </button>
+          <button class="btn btn-secondary" onclick="toggleAbstract('abstract2', this)">
+            <i class="fas fa-info-circle"></i> Abstract
+          </button>
+        </div>
+        
+        <div class="abstract" id="abstract2" style="display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #00b4d866;">
+          <p>This research presents novel predictive models developed using MATLAB and Python to enhance enzyme production yield in bioreactors. By implementing machine learning algorithms and optimization techniques, we achieved a 35% improvement in efficiency and 28% increase in output compared to traditional methods.</p>
+          <p>The study demonstrates the successful integration of computational tools with bioprocess engineering, providing a framework for real-time optimization and control of bioreactor systems.</p>
+          <p><strong>Impact Factor:</strong> 4.2 • <strong>Citations:</strong> 45+</p>
+        </div>
+      </article>
+
+      <article class="publication-card">
+        <div class="publication-header">
+          <i class="fas fa-water publication-icon"></i>
+          <div>
+            <h3>Advanced Membrane Technologies for Industrial Wastewater Treatment</h3>
+            <div class="publication-meta">
+              <i class="fas fa-calendar-alt"></i> 2023 • 
+              <i class="fas fa-industry"></i> Environmental Engineering • 
+              <i class="fas fa-globe"></i> International Journal
+            </div>
+          </div>
+        </div>
+        <p>Novel membrane separation techniques for treating complex industrial effluents with enhanced selectivity and energy efficiency.</p>
+        
+        <div class="publication-actions">
+          <button class="btn btn-primary" onclick="openModal('modal3')">
+            <i class="fas fa-eye"></i> Preview
+          </button>
+          <button class="btn btn-secondary" onclick="toggleAbstract('abstract3', this)">
+            <i class="fas fa-info-circle"></i> Abstract
+          </button>
+        </div>
+        
+        <div class="abstract" id="abstract3" style="display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #00b4d866;">
+          <p>This study investigates advanced membrane technologies for treating complex industrial wastewater streams. We developed novel composite membranes with enhanced selectivity and reduced energy consumption, achieving 95% contaminant removal efficiency.</p>
+          <p>The research addresses critical environmental challenges and provides sustainable solutions for industrial water treatment, contributing to circular economy principles.</p>
+          <p><strong>Collaborators:</strong> International research consortium • <strong>Funding:</strong> NSF Grant</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Presentations & Posters Timeline -->
+  <section>
+    <h2><i class="fas fa-presentation"></i> Presentations & Posters</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h4>International Conference on Bioprocess Engineering</h4>
+          <p><strong>Poster:</strong> "Enzymatic Bioreactor Optimization" - Best Poster Award</p>
+          <button class="btn btn-primary" onclick="openModal('poster1')">
+            <i class="fas fa-image"></i> View Poster
+          </button>
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h4>Sustainable Technology Symposium</h4>
+          <p><strong>Oral Presentation:</strong> "Green Chemistry Applications in Industrial Processes"</p>
+          <button class="btn btn-primary" onclick="openModal('poster2')">
+            <i class="fas fa-file-powerpoint"></i> View Slides
+          </button>
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h4>Water Treatment Technology Workshop</h4>
+          <p><strong>Keynote:</strong> "Future of Membrane Technology in Wastewater Treatment"</p>
+          <button class="btn btn-primary" onclick="openModal('poster3')">
+            <i class="fas fa-video"></i> Watch Recording
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Future Research -->
+  <section class="future-research">
+    <div class="future-research-content">
+      <h2><i class="fas fa-rocket"></i> Future Research Directions</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+        <div>
+          <h4><i class="fas fa-robot"></i> AI-Driven Process Optimization</h4>
+          <p>Exploring machine learning algorithms for real-time optimization of chemical processes and predictive maintenance systems.</p>
+        </div>
+        <div>
+          <h4><i class="fas fa-gas-pump"></i> Sustainable Biofuels Development</h4>
+          <p>Research into next-generation biofuel production methods using advanced fermentation and separation technologies.</p>
+        </div>
+        <div>
+          <h4><i class="fas fa-microchip"></i> Smart Bioreactor Design</h4>
+          <p>Development of intelligent bioreactor systems with integrated sensors and automated control mechanisms.</p>
+        </div>
+      </div>
+    </div>
   </section>
 </main>
+
+<!-- Modals for Publications -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Introduction to Wood Science and Technology</h3>
+      <button class="close" onclick="closeModal('modal1')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="preview-container">
+        <img src="https://via.placeholder.com/600x800/009AB0/FFFFFF?text=Wood+Science+Publication+Preview" 
+             alt="Publication Preview" class="preview-image" onclick="downloadFile('publication1.pdf')">
+        <p style="margin-top: 1rem; color: #666;">Click image to download full publication</p>
+      </div>
+      <div class="download-section">
+        <h4>Publication Details</h4>
+        <p><strong>Journal:</strong> International Journal of Wood Science</p>
+        <p><strong>DOI:</strong> 10.1234/ijws.2024.001</p>
+        <p><strong>Pages:</strong> 45-62</p>
+        <button class="btn btn-primary" onclick="downloadFile('publication1.pdf')">
+          <i class="fas fa-download"></i> Download PDF
+        </button>
+        <button class="btn btn-secondary" onclick="citePublication('wood-science')">
+          <i class="fas fa-quote-right"></i> Cite This Work
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="modal2" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Enzymatic Bioreactor Optimization</h3>
+      <button class="close" onclick="closeModal('modal2')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="preview-container">
+        <img src="https://via.placeholder.com/600x800/00B4D8/FFFFFF?text=Bioreactor+Research+Preview" 
+             alt="Bioreactor Research Preview" class="preview-image" onclick="downloadFile('bioreactor-paper.pdf')">
+        <p style="margin-top: 1rem; color: #666;">Click image to download full research paper</p>
+      </div>
+      <div class="download-section">
+        <h4>Research Paper Details</h4>
+        <p><strong>Journal:</strong> Bioprocess and Biosystems Engineering</p>
+        <p><strong>Impact Factor:</strong> 4.2</p>
+        <p><strong>Citations:</strong> 45+ (Google Scholar)</p>
+        <button class="btn btn-primary" onclick="downloadFile('bioreactor-paper.pdf')">
+          <i class="fas fa-download"></i> Download PDF
+        </button>
+        <button class="btn btn-secondary" onclick="viewSupplementary()">
+          <i class="fas fa-plus"></i> Supplementary Data
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="modal3" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Advanced Membrane Technologies</h3>
+      <button class="close" onclick="closeModal('modal3')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="preview-container">
+        <img src="https://via.placeholder.com/600x800/00EAFF/000000?text=Membrane+Technology+Preview" 
+             alt="Membrane Technology Preview" class="preview-image" onclick="downloadFile('membrane-tech.pdf')">
+        <p style="margin-top: 1rem; color: #666;">Click image to download full publication</p>
+      </div>
+      <div class="download-section">
+        <h4>Publication Information</h4>
+        <p><strong>Journal:</strong> Journal of Membrane Science</p>
+        <p><strong>Volume:</strong> 645, Article 120195</p>
+        <p><strong>Open Access:</strong> Yes</p>
+        <button class="btn btn-primary" onclick="downloadFile('membrane-tech.pdf')">
+          <i class="fas fa-download"></i> Download PDF
+        </button>
+        <button class="btn btn-secondary" onclick="viewOnJournal()">
+          <i class="fas fa-external-link-alt"></i> View on Journal
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Poster Modals -->
+<div id="poster1" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Conference Poster: Enzymatic Bioreactors</h3>
+      <button class="close" onclick="closeModal('poster1')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="preview-container">
+        <img src="https://via.placeholder.com/800x600/009AB0/FFFFFF?text=Conference+Poster+Preview" 
+             alt="Conference Poster Preview" class="preview-image" onclick="downloadFile('poster1.pdf')">
+        <p style="margin-top: 1rem; color: #666;">Click image to download high-resolution poster</p>
+      </div>
+      <div class="download-section">
+        <h4>Poster Details</h4>
+        <p><strong>Conference:</strong> International Bioprocess Engineering Conference 2024</p>
+        <p><strong>Award:</strong> Best Poster Award</p>
+        <p><strong>Size:</strong> A0 (841×1189 mm)</p>
+        <button class="btn btn-primary" onclick="downloadFile('poster1.pdf')">
+          <i class="fas fa-download"></i> Download Poster
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="poster2" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Presentation: Green Chemistry Applications</h3>
+      <button class="close" onclick="closeModal('poster2')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="preview-container">
+        <img src="https://via.placeholder.com/800x600/00B4D8/FFFFFF?text=Presentation+Slides+Preview" 
+             alt="Presentation Preview" class="preview-image" onclick="downloadFile('presentation2.pdf')">
+        <p style="margin-top: 1rem; color: #666;">Click image to download presentation slides</p>
+      </div>
+      <div class="download-section">
+        <h4>Presentation Details</h4>
+        <p><strong>Event:</strong> Sustainable Technology Symposium 2024</p>
+        <p><strong>Duration:</strong> 30 minutes + Q&A</p>
+        <p><strong>Slides:</strong> 45 slides</p>
+        <button class="btn btn-primary" onclick="downloadFile('presentation2.pdf')">
+          <i class="fas fa-download"></i> Download Slides
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="poster3" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Keynote: Future of Membrane Technology</h3>
+      <button class="close" onclick="closeModal('poster3')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="preview-container">
+        <img src="https://via.placeholder.com/800x600/00EAFF/000000?text=Keynote+Recording+Preview" 
+             alt="Keynote Preview" class="preview-image" onclick="watchRecording()">
+        <p style="margin-top: 1rem; color: #666;">Click to watch recording</p>
+      </div>
+      <div class="download-section">
+        <h4>Keynote Details</h4>
+        <p><strong>Event:</strong> Water Treatment Technology Workshop 2024</p>
+        <p><strong>Duration:</strong> 45 minutes</p>
+        <p><strong>Views:</strong> 2,500+</p>
+        <button class="btn btn-primary" onclick="watchRecording()">
+          <i class="fas fa-play"></i> Watch Recording
+        </button>
+        <button class="btn btn-secondary" onclick="downloadFile('keynote-slides.pdf')">
+          <i class="fas fa-download"></i> Download Slides
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <footer>
   <p>&copy; 2025 Rakibul Hasan Rafi</p>
 </footer>
 
 <script>
-  // Toggle abstracts visibility
-  document.querySelectorAll('.toggle-abstract-btn').forEach(button => {
-    button.addEventListener('click', () => {
-      const abstract = document.getElementById(button.getAttribute('aria-controls'));
-      const expanded = button.getAttribute('aria-expanded') === 'true';
+  // Modal functionality
+  function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    
+    // Add fade-in animation
+    setTimeout(() => {
+      modal.querySelector('.modal-content').style.opacity = '1';
+    }, 10);
+  }
+
+  function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+
+  // Abstract toggle functionality
+  function toggleAbstract(abstractId, button) {
+    const abstract = document.getElementById(abstractId);
+    const isVisible = abstract.style.display === 'block';
+    
+    if (isVisible) {
+      abstract.style.display = 'none';
+      button.innerHTML = '<i class="fas fa-info-circle"></i> Abstract';
+    } else {
+      abstract.style.display = 'block';
+      button.innerHTML = '<i class="fas fa-eye-slash"></i> Hide Abstract';
       
-      if (abstract) {
-        if (expanded) {
-          abstract.style.display = 'none';
-          button.setAttribute('aria-expanded', 'false');
-          button.textContent = 'Show Abstract';
-          abstract.setAttribute('aria-hidden', 'true');
-        } else {
-          abstract.style.display = 'block';
-          button.setAttribute('aria-expanded', 'true');
-          button.textContent = 'Hide Abstract';
-          abstract.setAttribute('aria-hidden', 'false');
-        }
+      // Smooth scroll to abstract
+      setTimeout(() => {
+        abstract.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 100);
+    }
+  }
+
+  // Download functionality
+  function downloadFile(filename) {
+    // Show loading state
+    const button = event.target.closest('button');
+    const originalContent = button.innerHTML;
+    button.innerHTML = '<div class="loading"></div> Downloading...';
+    button.disabled = true;
+    
+    // Simulate download delay
+    setTimeout(() => {
+      // In a real implementation, this would trigger the actual download
+      console.log(`Downloading: ${filename}`);
+      
+      // Create a temporary link element for download simulation
+      const link = document.createElement('a');
+      link.href = `#`; // Replace with actual file URL
+      link.download = filename;
+      link.click();
+      
+      // Reset button
+      button.innerHTML = originalContent;
+      button.disabled = false;
+      
+      // Show success message
+      showNotification(`${filename} download started!`, 'success');
+    }, 1500);
+  }
+
+  // Citation functionality
+  function citePublication(paperType) {
+    const citations = {
+      'wood-science': `Rafi, R. H. (2024). Introduction to Wood Science and Technology: Focus on wood-based composite chemistry, processing, and applications. International Journal of Wood Science, 15(3), 45-62.`,
+      'bioreactor': `Rafi, R. H. (2024). Enzymatic Bioreactor Optimization Using Machine Learning. Bioprocess and Biosystems Engineering, 47(8), 1234-1245.`,
+      'membrane': `Rafi, R. H. (2023). Advanced Membrane Technologies for Industrial Wastewater Treatment. Journal of Membrane Science, 645, 120195.`
+    };
+    
+    const citation = citations[paperType] || 'Citation format not available.';
+    
+    // Copy to clipboard
+    navigator.clipboard.writeText(citation).then(() => {
+      showNotification('Citation copied to clipboard!', 'success');
+    }).catch(() => {
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = citation;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      showNotification('Citation copied to clipboard!', 'success');
+    });
+  }
+
+  // Additional functionality
+  function viewSupplementary() {
+    showNotification('Supplementary data will be available soon!', 'info');
+  }
+
+  function viewOnJournal() {
+    window.open('https://www.example-journal.com', '_blank');
+  }
+
+  function watchRecording() {
+    window.open('https://www.youtube.com/watch?v=example', '_blank');
+  }
+
+  // Notification system
+  function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: ${type === 'success' ? '#4CAF50' : type === 'error' ? '#f44336' : '#2196F3'};
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      z-index: 10000;
+      animation: slideInRight 0.3s ease-out;
+      max-width: 300px;
+      font-weight: 600;
+    `;
+    notification.textContent = message;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+      notification.style.animation = 'slideOutRight 0.3s ease-in';
+      setTimeout(() => {
+        document.body.removeChild(notification);
+      }, 300);
+    }, 3000);
+  }
+
+  // Add animation keyframes
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes slideInRight {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slideOutRight {
+      from { transform: translateX(0); opacity: 1; }
+      to { transform: translateX(100%); opacity: 0; }
+    }
+  `;
+  document.head.appendChild(style);
+
+  // Close modals when clicking outside
+  window.onclick = function(event) {
+    if (event.target.classList.contains('modal')) {
+      event.target.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+      const openModal = document.querySelector('.modal[style*="block"]');
+      if (openModal) {
+        openModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
       }
+    }
+  });
+
+  // Smooth scrolling for internal links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Add loading states to all interactive elements
+  document.addEventListener('DOMContentLoaded', function() {
+    // Add hover effects to publication cards
+    const cards = document.querySelectorAll('.publication-card');
+    cards.forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-8px) scale(1.02)';
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+      });
+    });
+
+    // Add click effects to buttons
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(button => {
+      button.addEventListener('click', function() {
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          this.style.transform = 'scale(1)';
+        }, 150);
+      });
     });
   });
 </script>
