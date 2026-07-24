@@ -18,8 +18,8 @@ function initTypingEffect() {
   if (!heroTextElement) return;
 
   const texts = [
-    "Chemical Engineering Student at BUET",
-    "Aspiring PhD Candidate & Researcher",
+    "Chemical Engineering Graduate from BUET",
+    "Aspiring Researcher",
     "Available for remote research collaboration"
   ];
   let textIndex = 0;
