@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Projects | Rakibul Hasan Rafi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header>
+  <h1>Rakibul Hasan Rafi</h1>
+  <nav aria-label="Primary navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="education.html">Education</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="projects.html" aria-current="page">Projects</a></li>
+      <li><a href="miscellaneous.html">Certifications & Activities</a></li>
+      <li><a href="professional-experience.html">Experience</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+    <button class="btn filter-btn active" data-filter="all">All</button>
+    <button class="btn btn-secondary filter-btn" data-filter="academic">Academic</button>
+    <button class="btn btn-secondary filter-btn" data-filter="coursework">Coursework</button>
+    <button class="btn btn-secondary filter-btn" data-filter="personal">Personal</button>
+  </div>
+
+  <section class="projects-list">
+    <article class="project-item" data-category="academic">
+      <h3>Optimization of Bioprocess Parameters for Enzyme Production</h3>
+      <p>Developed predictive models to enhance enzyme yield using MATLAB and Python algorithms.</p>
+    </article>
+
+    <article class="project-item" data-category="academic">
+      <h3>Wastewater Treatment via Enzymatic Bioreactors</h3>
+      <p>Designed a pilot-scale bioreactor system for organic pollutant decomposition.</p>
+    </article>
+
+    <article class="project-item" data-category="coursework">
+      <h3>Process Simulation for Chemical Reactors</h3>
+      <p>Used Aspen Plus to simulate catalytic reactions with thermo-dynamic optimization.</p>
+    </article>
+
+    <article class="project-item" data-category="personal">
+      <h3>Automation Tool for Lab Data Processing</h3>
+      <p>Developed Python scripts to automate multi-format data extraction and visualization.</p>
+    </article>
+  </section>
+
+  <aside class="skills-section" style="margin-top: 2.5rem; padding: 1.5rem; background: var(--bg-card); border-radius: var(--radius-md); border: 1px solid var(--border);">
+    <h2>Technical Skills</h2>
+    <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; list-style-type: square; padding-left: 1.2rem;">
+      <li>MATLAB Programming</li>
+      <li>Python (Data Analysis)</li>
+      <li>Aspen Plus Process Simulation</li>
+      <li>COMSOL Multiphysics</li>
+      <li>Bioprocess Design</li>
+    </ul>
+  </aside>
+</main>
+
+<footer>
+  <p>&copy; 2026 Rakibul Hasan Rafi. All rights reserved.</p>
+</footer>
+<script src="script.js" defer></script>
+</body>
+</html>

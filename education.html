@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Education & Transcripts | Rakibul Hasan Rafi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header>
+  <h1>Education & Academic Background</h1>
+  <nav aria-label="Primary navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="education.html" aria-current="page">Education</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="miscellaneous.html">Certifications & Activities</a></li>
+      <li><a href="professional-experience.html">Experience</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="timeline">
+    <article class="degree">
+      <h2>B.Sc. in Chemical Engineering</h2>
+      <p><strong>Bangladesh University of Engineering & Technology (BUET)</strong></p>
+      <p><strong>CGPA:</strong> 3.39 / 4.00 (Last two term avg > 3.65)</p>
+      <p><strong>Thesis:</strong> Gradual restoration & spatial declination of river pollution (Ongoing)</p>
+      <p><strong>Advisor:</strong> Assistant Prof. Dr. Noor Mohammad</p>
+      <!-- Transcripts button muted/hidden for the time being -->
+      <!-- <button class="btn open-modal-transcripts" style="margin-top: 0.8rem;">View B.Sc. Transcripts</button> -->
+    </article>
+
+    <article class="degree">
+      <h2>Higher Secondary School Certificate (HSC)</h2>
+      <p><strong>Notre Dame College, Dhaka</strong></p>
+      <p><strong>Result:</strong> GPA 5.00 / A+</p>
+    </article>
+  </section>
+
+  <!-- Transcripts Modal -->
+  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+    <div class="modal-content">
+      <button class="close-modal" aria-label="Close modal">&times;</button>
+      <h2 id="modalTitle">B.Sc. Semester Transcripts</h2>
+      <div id="bsc-transcripts-list">
+        <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 1rem;">
+          <li style="margin-bottom: 0.6rem;"><a href="certificates/BSc_Sem1.pdf" target="_blank" rel="noopener">Level 1 Term 1 Transcript</a></li>
+          <li style="margin-bottom: 0.6rem;"><a href="certificates/BSc_Sem2.pdf" target="_blank" rel="noopener">Level 1 Term 2 Transcript</a></li>
+          <li style="margin-bottom: 0.6rem;"><a href="certificates/BSc_Sem3.pdf" target="_blank" rel="noopener">Level 2 Term 1 Transcript</a></li>
+          <li style="margin-bottom: 0.6rem;"><a href="certificates/BSc_Sem4.pdf" target="_blank" rel="noopener">Level 2 Term 2 Transcript</a></li>
+          <li style="margin-bottom: 0.6rem;"><a href="certificates/BSc_Sem5.pdf" target="_blank" rel="noopener">Level 3 Term 1 Transcript</a></li>
+          <li style="margin-bottom: 0.6rem;"><a href="certificates/BSc_Sem6.pdf" target="_blank" rel="noopener">Level 3 Term 2 Transcript</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2026 Rakibul Hasan Rafi. All rights reserved.</p>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>

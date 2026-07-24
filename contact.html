@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact | Rakibul Hasan Rafi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header>
+  <h1>Contact Me</h1>
+  <nav aria-label="Primary navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="education.html">Education</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="miscellaneous.html">Certifications & Activities</a></li>
+      <li><a href="professional-experience.html">Experience</a></li>
+      <li><a href="contact.html" aria-current="page">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="contact-form" style="background: var(--bg-card); padding: 2rem; border-radius: var(--radius-md); border: 1px solid var(--border);">
+    <h2>Get in Touch</h2>
+    <form action="https://formspree.io/f/mzzejjqa" method="POST">
+      <div style="margin-bottom: 1rem;">
+        <label for="name" style="display:block; font-weight:600; margin-bottom:0.3rem;">Name</label>
+        <input id="name" name="name" type="text" required style="width:100%; padding:0.6rem; border:1px solid var(--border); border-radius:var(--radius-sm);" />
+      </div>
+      <div style="margin-bottom: 1rem;">
+        <label for="email" style="display:block; font-weight:600; margin-bottom:0.3rem;">Email</label>
+        <input id="email" name="email" type="email" required style="width:100%; padding:0.6rem; border:1px solid var(--border); border-radius:var(--radius-sm);" />
+      </div>
+      <div style="margin-bottom: 1rem;">
+        <label for="message" style="display:block; font-weight:600; margin-bottom:0.3rem;">Message</label>
+        <textarea id="message" name="message" rows="5" required style="width:100%; padding:0.6rem; border:1px solid var(--border); border-radius:var(--radius-sm);"></textarea>
+      </div>
+      <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+    </form>
+  </section>
+
+  <section class="social-links" style="margin-top: 2.5rem;">
+    <h3>Connect With Me</h3>
+    <div class="social-icons">
+      <a href="https://linkedin.com/in/rakibul-hasan-rafi-6b0749313" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin fa-2x"></i></a>
+      <a href="https://github.com/RaFi-2002" target="_blank" rel="noopener" class="social-link" aria-label="GitHub"><i class="fab fa-github fa-2x"></i></a>
+      <a href="https://www.researchgate.net/profile/Rakibul-Hasan-Rafi" target="_blank" rel="noopener" class="social-link" aria-label="ResearchGate"><i class="fab fa-researchgate fa-2x"></i></a>
+      <a href="mailto:rafirock377@gmail.com" class="social-link" aria-label="Email"><i class="fas fa-envelope fa-2x"></i></a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2026 Rakibul Hasan Rafi. All rights reserved.</p>
+</footer>
+<script src="script.js" defer></script>
+</body>
+</html>
